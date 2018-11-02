@@ -6,13 +6,20 @@ Movie tracker is a dynamic single page application for quickly looking up movies
 
 #### Technologies
 
-* React / React-router
+* React / React-Router
 * Redux
+* [NodeJS (BE)](https://github.com/turingschool-examples/movie-tracker)
+
+#### APIs
+* [The Movie DB](https://themoviedb.org/documentation/api)
+
 
 #### Testing Suite
 * Enzyme / Jest
 
 ### Getting Started:
+
+#### Server
 
 Install and setup PostgreSQL 
 
@@ -20,24 +27,21 @@ Install and setup PostgreSQL
 
 `git clone https://github.com/turingschool-examples/movie-tracker`
 
-`npm install && npm start`
+#### Client
 
-##### To run the front-end, in a new terminal window run:
-`git clone https://github.com/GraySmith00/movie-tracker-client`
-
-##### Install the dependencies
+* Install the dependencies
 
 `npm install`
 
-##### Start the application
+* Start the application
 
 `npm start`
 
-##### To run the testing suites, run:
+* To run the testing suites, run:
 
 `npm test`
 
-##### To check for any linter errors, run:
+* To check for any linter errors, run:
 
 `npm run eslint`
 
