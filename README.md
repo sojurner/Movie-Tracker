@@ -18,43 +18,28 @@ Install and setup PostgreSQL
 
 - Clone the server repository:
 
-```
-git clone https://github.com/turingschool-examples/movie-tracker
-```
+`git clone https://github.com/turingschool-examples/movie-tracker`
 
-```
-npm install && npm start
-```
+`npm install && npm start`
 
 ##### To run the front-end, in a new terminal window run:
-
-```
-git clone https://github.com/GraySmith00/movie-tracker-client
-```
+`git clone https://github.com/GraySmith00/movie-tracker-client`
 
 ##### Install the dependencies
 
-```
-npm install
-```
+`npm install`
 
 ##### Start the application
 
-```
-npm start
-```
+`npm start`
 
 ##### To run the testing suites, run:
 
-```
-npm test
-```
+`npm test`
 
 ##### To check for any linter errors, run:
 
-```
-npm run eslint
-```
+`npm run eslint`
 
 ### Contributors
  * [Gray Smith](https://github.com/GraySmith00)
