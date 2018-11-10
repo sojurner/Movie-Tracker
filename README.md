@@ -4,46 +4,37 @@
 
 Movie tracker is a dynamic single page application for quickly looking up movies that are still in theaters. Quickly find what you want to see, watch the trailer, and save it to your favorites for later viewing! MovieTracker was built using React, Redux, and React Router and is fully tested using Enzyme and Jest.
 
-### To get started, get the server up and running:
+### Technologies
 
-Make sure you have PostgreSQL setup on your machine, clone the server repo:
+* React / React-Router
+* Redux
+* [NodeJS (BE)](https://github.com/turingschool-examples/movie-tracker)
 
-```
-git clone https://github.com/turingschool-examples/movie-tracker
-```
+### APIs
+* [The Movie DB](https://themoviedb.org/documentation/api)
 
-Then run:
 
-```
-npm install && npm start
-```
+### Testing Suite
+* Enzyme / Jest
 
-### To run the front-end, in a new terminal window run:
+## Getting Started:
 
-```
-git clone https://github.com/GraySmith00/movie-tracker-client
-```
+### Server
 
-### Install the dependencies
+Install and setup PostgreSQL 
 
-```
-npm install
-```
+- Clone the server repository: `git clone https://github.com/turingschool-examples/movie-tracker`
 
-### Start the application
+### Client
 
-```
-npm start
-```
+* Install dependencies: `npm install`
 
-### To run the testing suites, run:
+* Start application: `npm start`
 
-```
-npm test
-```
+* To run testing suites: `npm test`
 
-### To check for any linter errors, run:
+* Eslint: `npm run eslint`
 
-```
-npm run eslint
-```
+### Contributors
+ * [Gray Smith](https://github.com/GraySmith00)
+ * [Cody Taft](https://github.com/codytaft)
