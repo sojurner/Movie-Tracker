@@ -9,10 +9,10 @@ const Slide = ({ movie }) => {
   return (
     <div
       className="slide"
-      style={{
-        backgroundImage:
-          'url(' + require(`../../images/jumbotron/${movie_id}.jpg`) + ')'
-      }}
+      // style={{
+      //   backgroundImage:
+      //     'url(' + require(`../../images/jumbotron/${movie_id}.jpg`) + ')'
+      // }}
     >
       <div className="jumbotron-overlay">
         <div className="inner-content">
