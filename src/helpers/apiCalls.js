@@ -1,4 +1,3 @@
-// import { key } from '../api-key';
 import { movieCleaner } from './dataCleaners';
 
 export const getNowPlaying = async () => {
