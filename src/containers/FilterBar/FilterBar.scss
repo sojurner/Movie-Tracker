@@ -1,0 +1,27 @@
+// .search-icon-box {
+//   background-color: #01afd6;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 3rem;
+//   width: 3rem;
+//   position: absolute;
+//   // margin: 0rem 0 0 14rem;
+// }
+
+.fa-search {
+  position: absolute;
+  font-size: 1.7rem;
+  left: 2rem;
+  top: 6rem;
+  color: rgb(0, 0, 0);
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  font-size: 1.7rem;
+  left: 2rem;
+  top: 6rem;
+}
