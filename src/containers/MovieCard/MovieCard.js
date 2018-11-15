@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  addFavorite,
-  getFavorites,
-  removeFavorite,
-  getMovieTrailer
-} from '../../helpers/apiCalls';
-import {
-  addFavoriteToState,
-  removeFavoriteFromState,
-  toggleMovieStatus,
-  addTrailerToState
-} from '../../actions/movieActions';
+import { TrailerModal } from '../../components/TrailerModal/TrailerModal';
+
+import * as call from '../../helpers/apiCalls';
+import * as actions from '../../actions/movieActions';
 import { setFavoritesErrorState } from '../../actions/errorActions';
 
 import './MovieCard.css';
