@@ -10,7 +10,6 @@ import { setCurrentUser } from '../../actions/userActions.js';
 import Navigation from '../Navigation/Navigation';
 import Routes from '../../components/Routes/Routes';
 import Jumbotron from '../Jumbotron/Jumbotron';
-import Modal from '../Modal/Modal';
 
 import './App.css';
 
@@ -43,7 +42,6 @@ export class App extends Component {
         <Router>
           <div className="app">
             <FilterBar />
-            <Modal />
             <header className="container header-container">
               <Navigation />
             </header>
