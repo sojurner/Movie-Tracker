@@ -6,13 +6,12 @@ export const getNowPlaying = async () => {
   }`;
   const response = await fetch(url);
   const nowPlaying = await response.json();
-  console.log(nowPlaying);
   return movieCleaner(nowPlaying);
 };
 
-export const getMoviesBySearch = async (type, query) => {
+export const getMoviesBySearch = async query => {
   query = query.toLowerCase().replace(/ /g, '+');
-  const url = `https://api.themoviedb.org/3/search/${type}?api_key=${
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${
     process.env.REACT_APP_TMDB_API_KEY
   }&query=${query}`;
   const response = await fetch(url);
