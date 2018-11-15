@@ -40,32 +40,29 @@ export class FilterBar extends Component {
 
   render() {
     const { suggestions } = this.state;
-    if (this.state.filterDisplay) {
-      return (
+    return (
+      <div>
         <form className="filter-form" onSubmit={this.searchMovies}>
-          <select onChange={this.setFilterOptions}>
-            <option>Select Option</option>
-            <option value="movie">Movie</option>
-            <option value="actor">Actor/Actress</option>
-          </select>
           <input
+            className="movie-input"
+            placeholder="Enter Movie"
             type="text"
             name="searchInput"
             onChange={this.setSearchInput}
-            value={this.state.search}
+            value={this.state.searchInput}
           />
-          {suggestions && (
-            <Suggestions
-              searchMovies={this.searchMovies}
-              suggestions={suggestions.slice(0, 6)}
-            />
-          )}
-          <button type="submit">Enter</button>
+          <button className="search-button" type="submit">
+            🔍
+          </button>
         </form>
-      );
-    } else {
-      return <i className="fas fa-search" onClick={this.showFilter} />;
-    }
+        {suggestions && (
+          <Suggestions
+            selectMovie={this.selectMovie}
+            suggestions={suggestions.slice(0, 6)}
+          />
+        )}
+      </div>
+    );
   }
 }
 
