@@ -5,14 +5,14 @@ import StarRatingComponent from 'react-star-rating-component';
 import './Slide.css';
 
 const Slide = ({ movie }) => {
-  const { title, movie_id, release_date, vote_average } = movie;
+  console.log(movie);
+  const { title, release_date, vote_average } = movie;
   return (
     <div
       className="slide"
-      // style={{
-      //   backgroundImage:
-      //     'url(' + require(`../../images/jumbotron/${movie_id}.jpg`) + ')'
-      // }}
+      style={{
+        backgroundImage: `url(${movie.backdrop_path})`
+      }}
     >
       <div className="jumbotron-overlay">
         <div className="inner-content">
