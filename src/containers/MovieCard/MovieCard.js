@@ -27,7 +27,7 @@ export class MovieCard extends Component {
       setFavoritesErrorState('Please create an account to add favorites');
       return;
     }
-    const favorites = await getFavorites(currentUser);
+    const favorites = await call.getFavorites(currentUser);
     const alreadyFavorite = favorites.data.find(
       favorite => favorite.movie_id === movie.movie_id
     );
@@ -35,38 +35,43 @@ export class MovieCard extends Component {
   };
 
   handleAlreadyFavorite = async alreadyFavorite => {
+    const { currentUser, movie, actions } = this.props;
     const {
-      currentUser,
-      movie,
       addFavoriteToState,
       removeFavoriteFromState,
       toggleMovieStatus
-    } = this.props;
+    } = actions;
     if (alreadyFavorite) {
-      const removedMovieId = await removeFavorite(movie, currentUser);
+      const removedMovieId = await call.removeFavorite(movie, currentUser);
       toggleMovieStatus(movie);
       await removeFavoriteFromState(removedMovieId);
     } else {
-      const addedMovieId = await addFavorite(movie, currentUser);
+      const addedMovieId = await call.addFavorite(movie, currentUser);
       toggleMovieStatus(movie);
       await addFavoriteToState(addedMovieId);
     }
   };
 
   handleMovieClick = async movieId => {
-    const trailerLink = await getMovieTrailer(movieId);
+    const trailerLink = await call.getMovieTrailer(movieId);
     const trailer = `https://www.youtube.com/embed/${
       trailerLink.results[0].key
     }?autoplay=1`;
-    this.props.addTrailerToState(trailer);
+
+    this.setState({ trailer, displayModal: true });
   };
 
   hoverOn = () => {
     this.setState({ hover: true });
   };
+
   hoverOff = () => {
     this.setState({ hover: false });
     this.props.setFavoritesErrorState('');
+  };
+
+  onCloseModal = () => {
+    this.setState({ displayModal: false });
   };
 
   render() {
