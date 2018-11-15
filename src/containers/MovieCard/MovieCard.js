@@ -119,6 +119,11 @@ export class MovieCard extends Component {
           />
           <p className="favorite-error">{this.props.error}</p>
         </div>
+        <TrailerModal
+          trailer={this.state.trailer}
+          displayModal={this.state.displayModal}
+          onCloseModal={this.onCloseModal}
+        />
       </div>
     );
   }
@@ -141,12 +146,11 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  addFavoriteToState: movieId => dispatch(addFavoriteToState(movieId)),
+  addFavoriteToState: movieId => dispatch(actions.addFavoriteToState(movieId)),
   removeFavoriteFromState: movieId =>
-    dispatch(removeFavoriteFromState(movieId)),
-  toggleMovieStatus: movie => dispatch(toggleMovieStatus(movie)),
-  setFavoritesErrorState: message => dispatch(setFavoritesErrorState(message)),
-  addTrailerToState: trailer => dispatch(addTrailerToState(trailer))
+    dispatch(actions.removeFavoriteFromState(movieId)),
+  toggleMovieStatus: movie => dispatch(actions.toggleMovieStatus(movie)),
+  setFavoritesErrorState: message => dispatch(setFavoritesErrorState(message))
 });
 
 export default connect(
