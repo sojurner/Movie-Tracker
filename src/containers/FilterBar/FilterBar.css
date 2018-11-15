@@ -1,14 +1,41 @@
 .fa-search {
   position: absolute;
   font-size: 1.7rem;
-  left: 2rem;
+  left: 1rem;
   top: 6rem;
   color: black; }
 
 .filter-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: absolute;
   font-size: 1.7rem;
-  left: 2rem;
+  left: 1rem;
   top: 6rem; }
+
+.movie-input {
+  height: 3rem;
+  width: 12rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border: 1px #00aad5 solid;
+  padding-left: 1rem; }
+
+.movie-input:hover {
+  background-color: #eff6ff; }
+
+.search-button {
+  position: absolute;
+  background-color: white;
+  height: 2.8rem;
+  top: 0.1rem;
+  right: 0.1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer; }
+
+.search-button:hover {
+  background-color: #daecfc; }
