@@ -12,21 +12,17 @@ export class FilterBar extends Component {
     super();
     this.state = {
       searchInput: '',
-      filterOption: '',
-      filterDisplay: false,
-      suggestions: null
+      suggestions: null,
+      selectedMovie: false
     };
   }
 
   searchMovies = async event => {
     event.preventDefault();
-    const { filterOption } = this.state;
-    const result = await getMoviesBySearch(
-      filterOption,
-      event.target.textContent
-    );
-    console.log(result);
+    const { selectedMovie } = this.state;
+    const result = await getMoviesBySearch(selectedMovie);
     this.props.addNowPlaying(result);
+    this.setState({ searchInput: '' });
   };
 
   setSearchInput = event => {
