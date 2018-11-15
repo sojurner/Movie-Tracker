@@ -5,7 +5,6 @@ import StarRatingComponent from 'react-star-rating-component';
 import './Slide.css';
 
 const Slide = ({ movie }) => {
-  console.log(movie);
   const { title, release_date, vote_average } = movie;
   return (
     <div
