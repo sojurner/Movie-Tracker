@@ -1,9 +1,13 @@
 import React from 'react';
+import './Suggestions.css';
 
-export const Suggestions = ({ suggestions, searchMovies }) => {
+export const Suggestions = ({ suggestions, selectMovie }) => {
   const suggestionList = suggestions.map(suggestion => {
     return (
-      <div className="suggestion" onClick={searchMovies}>
+      <div
+        className="suggestion"
+        onClick={event => selectMovie(event.target.textContent)}
+      >
         {suggestion}
       </div>
     );
