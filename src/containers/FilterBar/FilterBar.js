@@ -30,14 +30,12 @@ export class FilterBar extends Component {
     this.setState({ [name]: value, suggestions: getSuggestions(value) });
   };
 
-  setFilterOptions = event => {
-    event.preventDefault();
-    const { value } = event.target;
-    this.setState({ filterOption: value });
-  };
-
-  showFilter = () => {
-    this.setState({ filterDisplay: !this.state.filterDisplay });
+  selectMovie = selectedMovie => {
+    this.setState({
+      selectedMovie,
+      searchInput: selectedMovie,
+      suggestions: null
+    });
   };
 
   render() {
