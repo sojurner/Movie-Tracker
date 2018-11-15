@@ -7,6 +7,9 @@ export const movieCleaner = data => {
       release_date: result.release_date,
       overview: result.overview,
       vote_average: result.vote_average,
+      backdrop_path: `http://image.tmdb.org/t/p/original${
+        result.backdrop_path
+      }`,
       poster_path: `http://image.tmdb.org/t/p/original${result.poster_path}`,
       favorite: false
     };
