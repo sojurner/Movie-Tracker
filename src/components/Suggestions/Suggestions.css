@@ -1,0 +1,16 @@
+.suggestion {
+  background-color: #d7e7f5;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  width: 12rem;
+  color: #4b8ec9;
+  border: 1px solid #c6def4;
+  cursor: pointer; }
+
+.suggestion-list {
+  position: absolute;
+  left: 1rem;
+  top: 8.9rem; }
+
+.suggestion:hover {
+  background-color: #e3edf4;
+  color: #3591e3; }

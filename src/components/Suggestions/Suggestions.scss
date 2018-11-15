@@ -1,0 +1,19 @@
+.suggestion {
+  background-color: rgb(215, 231, 245);
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  width: 12rem;
+  color: rgb(75, 142, 201);
+  border: 1px solid rgb(198, 222, 244);
+  cursor: pointer;
+}
+
+.suggestion-list {
+  position: absolute;
+  left: 1rem;
+  top: 8.9rem;
+}
+
+.suggestion:hover {
+  background-color: rgb(227, 237, 244);
+  color: rgb(53, 145, 227);
+}
