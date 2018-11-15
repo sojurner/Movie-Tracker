@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { getNowPlaying } from '../../helpers/apiCalls.js';
-
+import FilterBar from '../FilterBar/FilterBar';
 import { addNowPlaying, clearFavorites } from '../../actions/movieActions';
 import { setCurrentUser } from '../../actions/userActions.js';
 import Navigation from '../Navigation/Navigation';
@@ -42,6 +42,7 @@ export class App extends Component {
       <div>
         <Router>
           <div className="app">
+            <FilterBar />
             <Modal />
             <header className="container header-container">
               <Navigation />
