@@ -14,9 +14,12 @@ export class MovieCard extends Component {
   constructor() {
     super();
     this.state = {
-      hover: false
+      hover: false,
+      displayModal: false,
+      trailer: ''
     };
   }
+
   handleFavoriteClick = async () => {
     const { currentUser, movie, setFavoritesErrorState } = this.props;
 
