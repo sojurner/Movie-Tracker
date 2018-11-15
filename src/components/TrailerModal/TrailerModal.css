@@ -1,0 +1,22 @@
+.styles_modal__gNwvD {
+  max-width: 60rem;
+  position: relative;
+  padding: 0.3rem;
+  background: #454545c6;
+  background-clip: padding-box;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
+  margin: auto; }
+
+.styles_closeButton__20ID4 {
+  position: absolute;
+  top: 23px;
+  left: 23px;
+  border: none;
+  padding: 0;
+  background-color: #a51919;
+  display: flex;
+  border-radius: 0.5rem;
+  cursor: pointer; }
+
+.styles_closeButton__20ID4:hover {
+  background-color: #f43636; }
