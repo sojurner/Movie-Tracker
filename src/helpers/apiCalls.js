@@ -6,7 +6,18 @@ export const getNowPlaying = async () => {
   }`;
   const response = await fetch(url);
   const nowPlaying = await response.json();
+  console.log(nowPlaying);
   return movieCleaner(nowPlaying);
+};
+
+export const getMoviesBySearch = async (type, query) => {
+  query = query.toLowerCase().replace(/ /g, '+');
+  const url = `https://api.themoviedb.org/3/search/${type}?api_key=${
+    process.env.REACT_APP_TMDB_API_KEY
+  }&query=${query}`;
+  const response = await fetch(url);
+  const matches = await response.json();
+  return movieCleaner(matches);
 };
 
 export const registerUser = async user => {
