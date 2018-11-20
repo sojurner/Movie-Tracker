@@ -1,5 +1,7 @@
 # MovieTracker
 
+[Demo](https://movie-tracker-client.herokuapp.com/) (sign-up and favorite feature not available)
+
 <img src="https://i.imgur.com/tCkT10D.png" width='600px' alt="MovieTracker application">
 
 Movie tracker is a dynamic single page application for quickly looking up movies that are still in theaters. Quickly find what you want to see, watch the trailer, and save it to your favorites for later viewing! MovieTracker was built using React, Redux, and React Router and is fully tested using Enzyme and Jest.
