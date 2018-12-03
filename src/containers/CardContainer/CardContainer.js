@@ -1,12 +1,14 @@
 import React from 'react';
 import MovieCard from '../MovieCard/MovieCard';
+import { setCurrentView } from '../../actions/userActions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './CardContainer.css';
 
-export const CardContainer = ({ movies, category }) => {
+export const CardContainer = ({ movies, category, setCurrentView }) => {
   let displayCards;
+  setCurrentView('');
   if (category === 'favorites') {
     if (movies.favorites.length === 0) {
       displayCards = <p>You have not added anything to your favorites yet!</p>;
@@ -24,7 +26,12 @@ export const CardContainer = ({ movies, category }) => {
     });
   }
 
-  return <div className="card-container">{displayCards}</div>;
+  return (
+    <div className="card-container">
+      <h1 className="movie-header">Latest in theaters</h1>
+      {displayCards}
+    </div>
+  );
 };
 
 CardContainer.propTypes = {
@@ -36,4 +43,11 @@ const mapStateToProps = state => ({
   movies: state.movies
 });
 
-export default connect(mapStateToProps)(CardContainer);
+const mapDispatchToProps = dispatch => ({
+  setCurrentView: view => dispatch(setCurrentView(view))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CardContainer);
