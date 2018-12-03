@@ -1,3 +1,6 @@
+.filter-container {
+  position: relative; }
+
 .fa-search {
   position: absolute;
   font-size: 1.7rem;
@@ -6,36 +9,42 @@
   color: black; }
 
 .filter-form {
+  display: -ms-flexbox;
   display: flex;
+  z-index: 2;
+  -ms-flex-direction: row;
   flex-direction: row;
   position: absolute;
   font-size: 1.7rem;
-  left: 1rem;
-  top: 6rem; }
+  top: 1rem;
+  left: 50%;
+  margin: 0 0 0 -8.5rem; }
 
 .movie-input {
-  height: 3rem;
-  width: 12rem;
+  height: 2.5rem;
+  width: 17rem;
   font-size: 1rem;
   margin-bottom: 1.5rem;
   border-radius: 0.5rem;
   outline: none;
   border: 1px #00aad5 solid;
-  padding-left: 1rem; }
+  padding-left: 1rem;
+  background-color: #eff6ff; }
 
 .movie-input:hover {
-  background-color: #eff6ff; }
+  background-color: #cbdef0; }
 
 .search-button {
   position: absolute;
   background-color: white;
-  height: 2.8rem;
+  height: 2.3rem;
   top: 0.1rem;
   right: 0.1rem;
   border-radius: 0 0.5rem 0.5rem 0;
   border: none;
   font-size: 1rem;
-  cursor: pointer; }
+  cursor: pointer;
+  background-color: #eff6ff; }
 
 .search-button:hover {
-  background-color: #daecfc; }
+  background-color: #cbdef0; }
