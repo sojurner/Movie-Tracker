@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getNowPlaying } from '../../helpers/apiCalls.js';
+import { getNowPlaying, getPopularMovies } from '../../helpers/apiCalls.js';
 import FilterBar from '../FilterBar/FilterBar';
-import { addNowPlaying, clearFavorites } from '../../actions/movieActions';
+import {
+  addPopular,
+  addNowPlaying,
+  clearFavorites
+} from '../../actions/movieActions';
 import { setCurrentUser } from '../../actions/userActions.js';
 import Navigation from '../Navigation/Navigation';
 import Routes from '../../components/Routes/Routes';
@@ -17,9 +21,12 @@ export class App extends Component {
   constructor() {
     super();
     this.state = {
-      errors: ''
+      errors: '',
+      path: ''
     };
   }
+
+  componentDidUpdate() {}
 
   componentDidMount() {
     this.populateMovies();
@@ -28,7 +35,9 @@ export class App extends Component {
   populateMovies = async () => {
     try {
       const nowPlaying = await getNowPlaying();
+      const popular = await getPopularMovies();
       this.props.addNowPlaying(nowPlaying);
+      this.props.addPopular(popular);
     } catch (error) {
       this.setState({
         errors: error.message
@@ -37,6 +46,8 @@ export class App extends Component {
   };
 
   render() {
+    const { path } = this.state;
+    const { currentView } = this.props;
     return (
       <div>
         <Router>
@@ -45,8 +56,14 @@ export class App extends Component {
             <header className="container header-container">
               <Navigation />
             </header>
-            <main className="container main-container">
-              <Jumbotron />
+            <main
+              className={
+                !currentView
+                  ? `container main-container`
+                  : `container half-container`
+              }
+            >
+              <Jumbotron path={path} />
               <Routes />
             </main>
           </div>
@@ -58,6 +75,7 @@ export class App extends Component {
 
 App.propTypes = {
   addNowPlaying: PropTypes.func.isRequired,
+  addPopular: PropTypes.func.isRequired,
   setCurrentUser: PropTypes.func.isRequired,
   clearFavorites: PropTypes.func.isRequired,
   currentUser: PropTypes.object
@@ -65,12 +83,14 @@ App.propTypes = {
 
 export const mapDispatchToProps = dispatch => ({
   addNowPlaying: movies => dispatch(addNowPlaying(movies)),
+  addPopular: movies => dispatch(addPopular(movies)),
   setCurrentUser: user => dispatch(setCurrentUser(user)),
   clearFavorites: () => dispatch(clearFavorites())
 });
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  currentView: state.currentView
 });
 
 export default connect(
