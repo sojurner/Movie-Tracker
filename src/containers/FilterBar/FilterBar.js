@@ -41,7 +41,7 @@ export class FilterBar extends Component {
   render() {
     const { suggestions } = this.state;
     return (
-      <div>
+      <div className="search-container">
         <form className="filter-form" onSubmit={this.searchMovies}>
           <input
             className="movie-input"
