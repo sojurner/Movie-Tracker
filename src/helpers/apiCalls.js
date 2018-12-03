@@ -1,7 +1,17 @@
 import { movieCleaner } from './dataCleaners';
+import * as moment from 'moment';
 
 export const getNowPlaying = async () => {
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${
+    process.env.REACT_APP_TMDB_API_KEY
+  }`;
+  const response = await fetch(url);
+  const nowPlaying = await response.json();
+  return movieCleaner(nowPlaying);
+};
+
+export const getPopularMovies = async () => {
+  const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${
     process.env.REACT_APP_TMDB_API_KEY
   }`;
   const response = await fetch(url);
