@@ -2,52 +2,42 @@
   display: flex;
   justify-content: start;
   padding: 0;
-  margin: 1rem 0 0 0;
-  width: 100%;
-  padding: 2rem;
+  margin: 0;
   font-size: 1.5rem;
   text-decoration: none;
-  color: #fff; }
+  color: #fff;
+  font-family: xtreem; }
+
+.navigation {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed; }
 
 i {
   margin-right: 0.5rem; }
 
+.nav-btn-wrapper,
 .nav-btns {
   display: flex;
-  flex-direction: column;
-  margin-top: 10rem; }
+  flex-direction: row;
+  margin-right: 1rem; }
 
 .nav-link {
   display: flex;
   justify-content: start;
-  font-size: 1.2rem;
   text-decoration: none;
   color: #fff;
-  width: 100%;
-  padding: 2rem 0 2rem 2rem; }
+  margin: 1rem 0 0rem 2rem; }
+
+.nav-link-register,
+.nav-link-login {
+  margin: 1.5rem 0 0 1.5rem;
+  font-size: 1.2rem; }
 
 .active {
   background-color: rgba(0, 0, 0, 0.5); }
 
 .nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.5); }
-
-@media screen and (max-width: 780px) {
-  .nav-btns {
-    flex-direction: row;
-    margin-top: 0;
-    justify-content: space-evenly; }
-  .nav-btn-wrapper {
-    display: flex;
-    flex-direction: row; }
-  .brand {
-    justify-content: center;
-    font-size: 2rem;
-    margin: 0 0 0 0; }
-  .nav-link-register {
-    width: 12rem; }
-  .nav-link-login {
-    width: 12rem; }
-  .nav-link {
-    padding: 2rem 2rem 2rem 2rem;
-    justify-content: center; } }
+  color: rgba(164, 211, 255, 0.5); }
