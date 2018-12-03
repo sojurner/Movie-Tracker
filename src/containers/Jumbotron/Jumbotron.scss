@@ -1,11 +1,16 @@
 .jumbotron {
-  height: 25rem;
+  height: 100vh;
   width: 100%;
-
   position: relative;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  scroll-snap-align: start;
+}
+
+.jumbotron-half {
+  height: 100vh;
+  width: 50%;
 }
 
 .arrow-icons-container {
@@ -21,10 +26,24 @@
   top: 50%;
   width: 95%;
 
-  color: #fff;
+  color: rgb(158, 158, 158);
+}
+
+.arrows-icons-container-half {
+  position: absolute;
+  width: 48%;
+  color: rgb(158, 158, 158);
+
+  top: 80%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .jumbo-arrow {
   font-size: 3rem;
   cursor: pointer;
+}
+
+.jumbo-arrow:hover {
+  color: rgb(198, 206, 207);
 }
