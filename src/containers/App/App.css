@@ -18,7 +18,8 @@ body {
   display: flex;
   flex-direction: column;
   scroll-snap-type: y mandatory;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  background-color: #095669; }
 
 .half-container {
   display: flex;
