@@ -1,19 +1,35 @@
 .suggestion {
-  background-color: rgb(215, 231, 245);
+  background-color: rgb(253, 253, 253);
   padding: 0.5rem 0 0.5rem 0.5rem;
-  width: 12rem;
-  color: rgb(75, 142, 201);
-  border: 1px solid rgb(198, 222, 244);
+  width: 17rem;
+  color: rgb(34, 40, 46);
   cursor: pointer;
 }
 
+.suggestion:first-child {
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+}
+
+.suggestion:last-child {
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
 .suggestion-list {
+  cursor: pointer;
+  z-index: 10;
+
   position: absolute;
-  left: 1rem;
-  top: 8.9rem;
+  font-size: 0.9rem;
+  top: 3.48rem;
+  left: 50%;
+  margin: 0 0 0 -8.5rem;
+  border: 1px solid rgb(198, 222, 244);
+  border-radius: 0.5rem;
 }
 
 .suggestion:hover {
   background-color: rgb(227, 237, 244);
-  color: rgb(53, 145, 227);
+  color: rgb(0, 109, 204);
 }

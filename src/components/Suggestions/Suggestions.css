@@ -1,16 +1,29 @@
 .suggestion {
-  background-color: #d7e7f5;
+  background-color: #fdfdfd;
   padding: 0.5rem 0 0.5rem 0.5rem;
-  width: 12rem;
-  color: #4b8ec9;
-  border: 1px solid #c6def4;
+  width: 17rem;
+  color: #22282e;
   cursor: pointer; }
 
+.suggestion:first-child {
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem; }
+
+.suggestion:last-child {
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem; }
+
 .suggestion-list {
+  cursor: pointer;
+  z-index: 10;
   position: absolute;
-  left: 1rem;
-  top: 8.9rem; }
+  font-size: 0.9rem;
+  top: 3.48rem;
+  left: 50%;
+  margin: 0 0 0 -8.5rem;
+  border: 1px solid #c6def4;
+  border-radius: 0.5rem; }
 
 .suggestion:hover {
   background-color: #e3edf4;
-  color: #3591e3; }
+  color: #006dcc; }
