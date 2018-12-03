@@ -1,15 +1,18 @@
 .card-container {
-  margin: 10rem auto 0 auto;
+  margin: 2rem auto 0 auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  overflow-scroll-y: auto;
   grid-gap: 2em;
-  width: 90%;
+  overflow-scroll-y: auto;
+  width: 90%; }
+
+.card-container-root {
   scroll-snap-align: start; }
 
 .movie-header {
-  grid-column: 1 / 7;
-  margin: 6rem auto 0 auto; }
+  margin: 6rem auto 0 2.5rem;
+  color: aliceblue;
+  font-size: 3rem; }
 
 @media screen and (max-width: 1340px) {
   .card-container {
@@ -29,7 +32,12 @@
     grid-gap: 2em;
     grid-template-columns: repeat(3, 1fr); } }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 670px) {
+  .card-container {
+    grid-gap: 2em;
+    grid-template-columns: repeat(2, 1fr); } }
+
+@media screen and (max-width: 500px) {
   .card-container {
     grid-template-columns: repeat(1, 1fr);
     justify-content: center;
