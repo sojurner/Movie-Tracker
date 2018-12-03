@@ -1,5 +1,6 @@
 const initialState = {
   nowPlaying: [],
+  popular: [],
   favorites: [],
   trailer: ''
 };
@@ -12,15 +13,20 @@ export const movieReducer = (state = initialState, action) => {
         nowPlaying: action.movies
       };
 
+    case 'ADD_POPULAR':
+      return {
+        ...state,
+        popular: action.movies
+      };
+
     case 'TOGGLE_MOVIE_STATUS': {
-      const nowPlaying = state.nowPlaying.map(
-        movie =>
-          movie.movie_id !== action.changedMovie.movie_id
-            ? movie
-            : {
-                ...action.changedMovie,
-                favorite: !action.changedMovie.favorite
-              }
+      const nowPlaying = state.nowPlaying.map(movie =>
+        movie.movie_id !== action.changedMovie.movie_id
+          ? movie
+          : {
+              ...action.changedMovie,
+              favorite: !action.changedMovie.favorite
+            }
       );
       return {
         ...state,
@@ -45,11 +51,10 @@ export const movieReducer = (state = initialState, action) => {
     }
 
     case 'POPULATE_FAVORITES_STATE': {
-      const nowPlaying = state.nowPlaying.map(
-        movie =>
-          action.movieIds.includes(movie.movie_id)
-            ? { ...movie, favorite: true }
-            : movie
+      const nowPlaying = state.nowPlaying.map(movie =>
+        action.movieIds.includes(movie.movie_id)
+          ? { ...movie, favorite: true }
+          : movie
       );
       return {
         nowPlaying,
