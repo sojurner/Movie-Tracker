@@ -5,6 +5,7 @@ import { TrailerModal } from '../../components/TrailerModal/TrailerModal';
 
 import * as call from '../../helpers/apiCalls';
 import * as actions from '../../actions/movieActions';
+import * as moment from 'moment';
 import { setFavoritesErrorState } from '../../actions/errorActions';
 
 import './MovieCard.css';
@@ -76,7 +77,6 @@ export class MovieCard extends Component {
 
   render() {
     const {
-      title,
       release_date,
       overview,
       poster_path,
@@ -94,8 +94,10 @@ export class MovieCard extends Component {
         }}
       >
         <div className={this.state.hover ? 'overlay' : 'display-none'}>
-          <h3>{title}</h3>
-          <p>Released: {release_date}</p>
+          <p>
+            <i className="far fa-calendar-alt" />{' '}
+            {moment(release_date).format('MMM Do YY')}
+          </p>
           <p className="overview-text">
             {overview.length > 150 ? `${overview.slice(0, 150)}...` : overview}
           </p>
