@@ -44,19 +44,11 @@ export class Navigation extends Component {
                 exact
                 to="/register"
                 className="nav-link nav-link-register"
-                onClick={this.checkUserStatus}
               >
                 <i className="fas fa-user-plus" />
-                Sign Up
               </NavLink>
-              <NavLink
-                exact
-                to="/login"
-                className="nav-link nav-link-login"
-                onClick={this.checkUserStatus}
-              >
+              <NavLink exact to="/login" className="nav-link nav-link-login">
                 <i className="fas fa-sign-in-alt" />
-                Login
               </NavLink>
             </div>
           )}
