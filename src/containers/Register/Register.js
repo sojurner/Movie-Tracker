@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerUser } from '../../helpers/apiCalls';
-import { setCurrentUser } from '../../actions/userActions';
+import { setCurrentUser, setCurrentView } from '../../actions/userActions';
 import { setRegisterErrorState } from '../../actions/errorActions';
 import './Register.css';
 
@@ -14,6 +14,10 @@ export class Register extends Component {
       email: '',
       password: ''
     };
+  }
+
+  componentDidMount() {
+    this.props.setCurrentView('register');
   }
 
   handleChange = e => {
@@ -67,8 +71,10 @@ export class Register extends Component {
 
     return (
       <section className="register-user">
+        <section className="register-header">
+          <h3 className="register-title">Register</h3>
+        </section>
         <form onSubmit={this.handleSubmit} className="register-form">
-          <h3 className="register-title">Sign up</h3>
           {error && <p className="error-message">{error}</p>}
           <input
             onChange={this.handleChange}
@@ -95,6 +101,7 @@ export class Register extends Component {
             className="register-password"
           />
           <button className="register-btn">Submit</button>
+          <button className="register-browse">Browse As Guest</button>
         </form>
       </section>
     );
@@ -103,12 +110,14 @@ export class Register extends Component {
 
 Register.propTypes = {
   setCurrentUser: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired
+  error: PropTypes.string.isRequired,
+  setCurrentView: PropTypes.func.isRequired
 };
 
 export const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
-  setRegisterErrorState: message => dispatch(setRegisterErrorState(message))
+  setRegisterErrorState: message => dispatch(setRegisterErrorState(message)),
+  setCurrentView: view => dispatch(setCurrentView(view))
 });
 
 const mapStateToProps = state => ({
