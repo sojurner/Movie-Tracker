@@ -1,11 +1,8 @@
-.app {
-  display: flex;
-}
-
 .header-container {
-  width: 14rem;
-  height: 100vh;
-
+  height: 4rem;
+  width: 100vw;
+  position: fixed;
+  z-index: 1;
   background: #00b4db; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -14,15 +11,24 @@
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #0083b0,
-    #00b4db
+    #00445a,
+    #0f6b80
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
+body {
+  font-family: nunito;
+}
 .main-container {
-  flex: 10;
   height: 100vh;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+.half-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .modal-trailer {
@@ -92,10 +98,10 @@
 }
 
 @media screen and (max-width: 780px) {
-  .header-container {
-    width: 100%;
-    height: 12rem;
-  }
+  // .header-container {
+  //   width: 100%;
+  //   height: 12rem;
+  // }
   .app {
     flex-direction: column;
   }
@@ -122,4 +128,14 @@
     width: 70vw;
     height: 350px;
   }
+}
+
+@font-face {
+  font-family: xtreem;
+  src: url(../../assets/fonts/xtreem.ttf);
+}
+
+@font-face {
+  font-family: nunito;
+  src: url(../../assets/fonts/Nunito.ttf);
 }
