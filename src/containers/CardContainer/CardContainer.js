@@ -27,9 +27,9 @@ export const CardContainer = ({ movies, category, setCurrentView }) => {
   }
 
   return (
-    <div className="card-container">
-      <h1 className="movie-header">Latest in theaters</h1>
-      {displayCards}
+    <div className="card-container-root">
+      <h1 className="movie-header">Latest Releases</h1>
+      <div className="card-container">{displayCards}</div>
     </div>
   );
 };

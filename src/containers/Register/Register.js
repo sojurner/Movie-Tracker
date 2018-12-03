@@ -65,6 +65,10 @@ export class Register extends Component {
     });
   };
 
+  handleBrowse = () => {
+    this.props.history.push('/');
+  };
+
   render() {
     const { name, email, password } = this.state;
     const { error } = this.props;
@@ -101,7 +105,9 @@ export class Register extends Component {
             className="register-password"
           />
           <button className="register-btn">Submit</button>
-          <button className="register-browse">Browse As Guest</button>
+          <button className="register-browse" onClick={this.handleBrowse}>
+            Browse As Guest
+          </button>
         </form>
       </section>
     );
