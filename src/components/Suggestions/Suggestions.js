@@ -2,10 +2,11 @@ import React from 'react';
 import './Suggestions.css';
 
 export const Suggestions = ({ suggestions, selectMovie }) => {
-  const suggestionList = suggestions.map(suggestion => {
+  const suggestionList = suggestions.map((suggestion, index) => {
     return (
       <div
-        className="suggestion"
+        key={`suggestion-${index}`}
+        className={`suggestion suggestion-${index}`}
         onClick={event => selectMovie(event.target.textContent)}
       >
         {suggestion}
