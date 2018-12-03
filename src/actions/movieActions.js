@@ -3,6 +3,11 @@ export const addNowPlaying = movies => ({
   movies
 });
 
+export const addPopular = movies => ({
+  type: 'ADD_POPULAR',
+  movies
+});
+
 export const toggleMovieStatus = changedMovie => ({
   type: 'TOGGLE_MOVIE_STATUS',
   changedMovie
