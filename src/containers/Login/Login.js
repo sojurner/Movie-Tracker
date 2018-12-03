@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser, getFavorites } from '../../helpers/apiCalls';
-import { setCurrentUser } from '../../actions/userActions';
+import { setCurrentUser, setCurrentView } from '../../actions/userActions';
 import { populateFavoritesState } from '../../actions/movieActions';
 import { setLoginErrorState } from '../../actions/errorActions';
 import './Login.css';
@@ -13,6 +13,10 @@ export class Login extends Component {
       email: '',
       password: ''
     };
+  }
+
+  componentDidMount() {
+    this.props.setCurrentView('login');
   }
 
   handleChange = e => {
@@ -73,8 +77,10 @@ export class Login extends Component {
     const { error } = this.props;
     return (
       <section className="login-user">
-        <form onSubmit={this.handleSubmit} className="login-user-form">
+        <section className="login-header">
           <h3 className="login-title">Login</h3>
+        </section>
+        <form onSubmit={this.handleSubmit} className="login-user-form">
           {error && <p className="error-message">{error}</p>}
           <input
             className="login-email"
@@ -104,11 +110,13 @@ Login.propTypes = {
   populateFavoritesState: PropTypes.func.isRequired,
   setLoginErrorState: PropTypes.func.isRequired,
   currentUser: PropTypes.object,
-  error: PropTypes.string
+  error: PropTypes.string,
+  setCurrentView: PropTypes.func
 };
 
 export const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
+  setCurrentView: view => dispatch(setCurrentView(view)),
   populateFavoritesState: movieIds =>
     dispatch(populateFavoritesState(movieIds)),
   setLoginErrorState: message => dispatch(setLoginErrorState(message))
