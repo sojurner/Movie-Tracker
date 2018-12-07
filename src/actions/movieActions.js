@@ -8,6 +8,41 @@ export const addPopular = movies => ({
   movies
 });
 
+export const addDramas = movies => ({
+  type: 'ADD_DRAMAS',
+  movies
+});
+
+export const addActions = movies => ({
+  type: 'ADD_ACTIONS',
+  movies
+});
+
+export const addAnimated = movies => ({
+  type: 'ADD_ANIMATED',
+  movies
+});
+
+export const addComedies = movies => ({
+  type: 'ADD_COMEDIES',
+  movies
+});
+
+export const addHorrors = movies => ({
+  type: 'ADD_HORRORS',
+  movies
+});
+
+export const addSciFi = movies => ({
+  type: 'ADD_SCI_FI',
+  movies
+});
+
+export const setSearchedMovies = movies => ({
+  type: 'SET_SEARCHED',
+  movies
+});
+
 export const toggleMovieStatus = changedMovie => ({
   type: 'TOGGLE_MOVIE_STATUS',
   changedMovie
