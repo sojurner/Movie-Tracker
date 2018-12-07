@@ -39,7 +39,7 @@ export class Jumbotron extends Component {
     const trailerLink = await getMovieTrailer(movieId);
     const trailer = `https://www.youtube.com/embed/${
       trailerLink.results[0].key
-    }?autoplay=1`;
+    }?autoplay=1&mute=1`;
 
     this.setState({ trailer, displayModal: true });
   };
