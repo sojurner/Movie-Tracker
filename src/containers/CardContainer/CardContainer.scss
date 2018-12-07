@@ -4,11 +4,33 @@
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 2em;
   overflow-scroll-y: auto;
-  width: 90%;
+  // width: 90%;
+}
+
+.alice-carousel__wrapper {
+  width: 82%;
+  margin: auto;
+}
+
+.alice-carousel__prev-btn-item,
+.alice-carousel__next-btn-item {
+  color: beige;
+}
+
+.alice-carousel__prev-btn-item:hover,
+.alice-carousel__next-btn-item:hover {
+  color: rgb(116, 116, 116);
+}
+
+.in-theaters-text,
+.popular-text {
+  color: white;
+  font-size: 2rem;
+  margin-left: 2rem;
 }
 
 .card-container-root {
-  scroll-snap-align: start;
+  // scroll-snap-align: start;
 }
 
 .movie-header {
