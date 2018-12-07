@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNowPlaying } from '../../actions/movieActions';
+import { setSearchedMovies } from '../../actions/movieActions';
 import { getMoviesBySearch } from '../../helpers/apiCalls';
 import { Suggestions } from '../../components/Suggestions/Suggestions';
 
@@ -21,7 +21,7 @@ export class FilterBar extends Component {
     event.preventDefault();
     const { selectedMovie } = this.state;
     const result = await getMoviesBySearch(selectedMovie);
-    this.props.addNowPlaying(result);
+    this.props.setSearchedMovies(result);
     this.setState({ searchInput: '' });
   };
 
@@ -67,7 +67,7 @@ export class FilterBar extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  addNowPlaying: movies => dispatch(addNowPlaying(movies))
+  setSearchedMovies: movies => dispatch(setSearchedMovies(movies))
 });
 
 export default connect(
