@@ -1,5 +1,4 @@
 import { movieCleaner } from './dataCleaners';
-import * as moment from 'moment';
 
 export const getNowPlaying = async () => {
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${
@@ -17,6 +16,60 @@ export const getPopularMovies = async () => {
   const response = await fetch(url);
   const nowPlaying = await response.json();
   return movieCleaner(nowPlaying);
+};
+
+export const getPopularDramas = async () => {
+  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10&api_key=${
+    process.env.REACT_APP_TMDB_API_KEY
+  }`;
+  const response = await fetch(url);
+  const dramas = await response.json();
+  return movieCleaner(dramas);
+};
+
+export const getPopularAction = async () => {
+  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=28&sort_by=vote_average.desc&vote_count.gte=10&api_key=${
+    process.env.REACT_APP_TMDB_API_KEY
+  }`;
+  const response = await fetch(url);
+  const actions = await response.json();
+  return movieCleaner(actions);
+};
+
+export const getPopularAnimated = async () => {
+  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=16&sort_by=vote_average.desc&vote_count.gte=10&api_key=${
+    process.env.REACT_APP_TMDB_API_KEY
+  }`;
+  const response = await fetch(url);
+  const animated = await response.json();
+  return movieCleaner(animated);
+};
+
+export const getPopularComedies = async () => {
+  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=35&sort_by=vote_average.desc&vote_count.gte=10&api_key=${
+    process.env.REACT_APP_TMDB_API_KEY
+  }`;
+  const response = await fetch(url);
+  const comedies = await response.json();
+  return movieCleaner(comedies);
+};
+
+export const getPopularHorror = async () => {
+  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=27&sort_by=vote_average.desc&vote_count.gte=10&api_key=${
+    process.env.REACT_APP_TMDB_API_KEY
+  }`;
+  const response = await fetch(url);
+  const horror = await response.json();
+  return movieCleaner(horror);
+};
+
+export const getPopularSciFi = async () => {
+  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=878&sort_by=vote_average.desc&vote_count.gte=10&api_key=${
+    process.env.REACT_APP_TMDB_API_KEY
+  }`;
+  const response = await fetch(url);
+  const sciFi = await response.json();
+  return movieCleaner(sciFi);
 };
 
 export const getMoviesBySearch = async query => {
