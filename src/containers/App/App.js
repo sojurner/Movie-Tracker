@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getNowPlaying, getPopularMovies } from '../../helpers/apiCalls.js';
+import * as call from '../../helpers/apiCalls.js';
 import FilterBar from '../FilterBar/FilterBar';
-import {
-  addPopular,
-  addNowPlaying,
-  clearFavorites
-} from '../../actions/movieActions';
+import * as action from '../../actions/movieActions';
 import { setCurrentUser } from '../../actions/userActions.js';
 import Navigation from '../Navigation/Navigation';
 import Routes from '../../components/Routes/Routes';
