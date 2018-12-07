@@ -10,8 +10,8 @@ export const TrailerModal = ({ displayModal, trailer, onCloseModal }) => {
         className="modal-trailer"
         title="modal-trailer"
         src={trailer}
-        width="800"
-        height="500"
+        width="1200"
+        height="800"
       />
     </Modal>
   );
