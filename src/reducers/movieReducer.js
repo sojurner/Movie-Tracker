@@ -1,6 +1,15 @@
+import { stat } from 'fs';
+
 const initialState = {
   nowPlaying: [],
   popular: [],
+  dramas: [],
+  action: [],
+  animated: [],
+  comedy: [],
+  horror: [],
+  sciFi: [],
+  searched: null,
   favorites: [],
   trailer: ''
 };
@@ -17,6 +26,48 @@ export const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         popular: action.movies
+      };
+
+    case 'ADD_DRAMAS':
+      return {
+        ...state,
+        dramas: action.movies
+      };
+
+    case 'ADD_ACTIONS':
+      return {
+        ...state,
+        action: action.movies
+      };
+
+    case 'ADD_ANIMATED':
+      return {
+        ...state,
+        animated: action.movies
+      };
+
+    case 'ADD_COMEDIES':
+      return {
+        ...state,
+        comedy: action.movies
+      };
+
+    case 'ADD_HORRORS':
+      return {
+        ...state,
+        horror: action.movies
+      };
+
+    case 'ADD_SCI_FI':
+      return {
+        ...state,
+        sciFi: action.movies
+      };
+
+    case 'SET_SEARCHED':
+      return {
+        ...state,
+        searched: action.movies
       };
 
     case 'TOGGLE_MOVIE_STATUS': {
