@@ -7,6 +7,10 @@
   // width: 90%;
 }
 
+.carousel-container {
+  scroll-snap-align: start;
+}
+
 .alice-carousel__wrapper {
   width: 82%;
   margin: auto;
@@ -30,13 +34,30 @@
 }
 
 .card-container-root {
-  // scroll-snap-align: start;
+  scroll-snap-align: start;
 }
 
 .movie-header {
   margin: 6rem auto 0 2.5rem;
   color: aliceblue;
   font-size: 3rem;
+}
+
+.fa-film,
+.fa-fire,
+.fa-helicopter,
+.fa-grin-hearts,
+.fa-hornbill,
+.fa-laugh-squint,
+.fa-ghost,
+.fa-atom {
+  font-size: 1.7rem;
+  color: rgb(215, 215, 215);
+  margin-left: 1.3rem;
+}
+
+.carousel-header {
+  margin: 1.5rem 1rem 2rem 1rem;
 }
 
 @media screen and (max-width: 1340px) {

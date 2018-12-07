@@ -20,6 +20,17 @@ export const CardContainer = ({ movies, category, setCurrentView }) => {
     'sciFi'
   ];
 
+  const icons = [
+    'fas fa-film',
+    'fas fa-fire',
+    'fas fa-helicopter',
+    'far fa-grin-hearts',
+    'fab fa-hornbill',
+    'far fa-laugh-squint',
+    'fas fa-ghost',
+    'fas fa-atom'
+  ];
+
   // if (category === 'favorites') {
   //   if (movies.favorites.length === 0) {
   //     displayCards = <p>You have not added anything to your favorites yet!</p>;
@@ -58,8 +69,14 @@ export const CardContainer = ({ movies, category, setCurrentView }) => {
       });
 
       return (
-        <div className={`carousel-${section}`} key={`movie-${index}`}>
-          <h3 className="in-theaters-text">{section.toUpperCase()}</h3>
+        <div
+          className={`carousel-container carousel-${section}`}
+          key={`movie-${index}`}
+        >
+          <div className="carousel-header">
+            <span className="in-theaters-text">{section.toUpperCase()}</span>
+            <i className={icons[index]} />
+          </div>
           <AliceCarousel
             duration={400}
             autoPlay={true}
