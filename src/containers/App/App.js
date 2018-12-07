@@ -22,8 +22,6 @@ export class App extends Component {
     };
   }
 
-  componentDidUpdate() {}
-
   componentDidMount() {
     this.populateMovies();
   }
@@ -65,11 +63,14 @@ export class App extends Component {
 
   render() {
     const { path } = this.state;
-    const { currentView } = this.props;
+    const { currentView, nowPlaying } = this.props;
     return (
       <div>
         <Router>
           <div className="app">
+            {!nowPlaying && (
+              <img src="https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwicia_T7YTfAhXGmOAKHZkHDd4QjRx6BAgBEAU&url=https%3A%2F%2Fdribbble.com%2Fshots%2F2236318-Gooey-Effect-Infinity-Spinner-Loader&psig=AOvVaw1sCSKgJKFf0nnjB73NmmM5&ust=1543967477929265" />
+            )}
             <FilterBar />
             <header className="container header-container">
               <Navigation />
@@ -100,13 +101,20 @@ App.propTypes = {
 };
 
 export const mapDispatchToProps = dispatch => ({
-  addNowPlaying: movies => dispatch(addNowPlaying(movies)),
-  addPopular: movies => dispatch(addPopular(movies)),
+  addNowPlaying: movies => dispatch(action.addNowPlaying(movies)),
+  addPopular: movies => dispatch(action.addPopular(movies)),
+  addDramas: movies => dispatch(action.addDramas(movies)),
+  addActions: movies => dispatch(action.addActions(movies)),
+  addAnimated: movies => dispatch(action.addAnimated(movies)),
+  addComedies: movies => dispatch(action.addComedies(movies)),
+  addHorrors: movies => dispatch(action.addHorrors(movies)),
+  addSciFi: movies => dispatch(action.addSciFi(movies)),
   setCurrentUser: user => dispatch(setCurrentUser(user)),
-  clearFavorites: () => dispatch(clearFavorites())
+  clearFavorites: () => dispatch(action.clearFavorites())
 });
 
 const mapStateToProps = state => ({
+  nowPlaying: state.movies.nowPlaying,
   currentUser: state.currentUser,
   currentView: state.currentView
 });
