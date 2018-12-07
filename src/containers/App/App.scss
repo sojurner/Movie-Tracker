@@ -22,7 +22,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   overflow-y: scroll;
   background-color: #095669;
 }
@@ -58,6 +58,22 @@ body {
   color: red;
   background-color: rgb(249, 182, 182);
   border-radius: 5px;
+}
+
+.tmdb-logo {
+  position: absolute;
+  bottom: 0;
+  height: 3rem;
+}
+
+.tmdb-powered {
+  position: absolute;
+  bottom: 0;
+}
+
+.tmdb-logo {
+  left: 50%;
+  right: 50%;
 }
 
 @media screen and (max-width: 1550px) {

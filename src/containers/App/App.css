@@ -8,32 +8,27 @@
   background: -webkit-linear-gradient(to right, #0083b0, #00b4db);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #00445a, #0f6b80);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
 body {
-  font-family: nunito;
-}
+  font-family: nunito; }
 
 .main-container {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* scroll-snap-type: y mandatory; */
+  scroll-snap-type: y proximity;
   overflow-y: scroll;
-  background-color: #095669;
-}
+  background-color: #095669; }
 
 .half-container {
   display: flex;
-  background-color: #095669;
-}
+  background-color: #095669; }
 
 .modal-trailer {
   border: none;
   height: 500px;
-  width: 50vw;
-}
+  width: 50vw; }
 
 .modal {
   z-index: 1;
@@ -43,8 +38,7 @@ body {
   border: 10px solid rgba(113, 137, 137, 0.5);
   overflow: auto;
   display: block;
-  border-radius: 5px;
-}
+  border-radius: 5px; }
 
 .remove-modal {
   position: absolute;
@@ -53,83 +47,77 @@ body {
   cursor: pointer;
   color: red;
   background-color: #f9b6b6;
-  border-radius: 5px;
-}
+  border-radius: 5px; }
+
+.tmdb-logo {
+  position: absolute;
+  bottom: 0;
+  height: 3rem; }
+
+.tmdb-powered {
+  position: absolute;
+  bottom: 0; }
+
+.tmdb-logo {
+  left: 50%;
+  right: 50%; }
 
 @media screen and (max-width: 1550px) {
   .modal {
     position: absolute;
     top: 10rem;
-    left: 25rem;
-  }
+    left: 25rem; }
   .modal-trailer {
     border: none;
     width: 60vw;
-    height: 450px;
-  }
-}
+    height: 450px; } }
 
 @media screen and (max-width: 1300px) {
   .modal {
     position: absolute;
     top: 10rem;
-    left: 20rem;
-  }
+    left: 20rem; }
   .modal-trailer {
     border: none;
     width: 60vw;
-    height: 400px;
-  }
-}
+    height: 400px; } }
 
 @media screen and (max-width: 1050px) {
   .modal {
     position: absolute;
     top: 13rem;
-    left: 17rem;
-  }
+    left: 17rem; }
   .modal-trailer {
     border: none;
     width: 61vw;
-    height: 300px;
-  }
-}
+    height: 300px; } }
 
 @media screen and (max-width: 780px) {
   .app {
-    flex-direction: column;
-  }
+    flex-direction: column; }
   .modal-trailer {
     border: none;
     width: 73vw;
-    height: 350px;
-  }
+    height: 350px; }
   .modal {
     position: absolute;
     top: 20rem;
-    left: 6rem;
-  }
-}
+    left: 6rem; } }
 
 @media screen and (max-width: 680px) {
   .modal {
     position: absolute;
     top: 20rem;
-    left: 5rem;
-  }
+    left: 5rem; }
   .modal-trailer {
     border: none;
     width: 70vw;
-    height: 350px;
-  }
-}
+    height: 350px; } }
 
 @font-face {
   font-family: xtreem;
-  src: url(../../assets/fonts/xtreem.ttf);
-}
+  src: url(../../assets/fonts/xtreem.ttf); }
 
 @font-face {
   font-family: nunito;
-  src: url(../../assets/fonts/Nunito.ttf);
-}
+  src: url(../../assets/fonts/Nunito.ttf); }
