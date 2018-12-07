@@ -29,11 +29,33 @@ export class App extends Component {
   }
 
   populateMovies = async () => {
+    const {
+      addNowPlaying,
+      addPopular,
+      addActions,
+      addComedies,
+      addDramas,
+      addHorrors,
+      addAnimated,
+      addSciFi
+    } = this.props;
     try {
-      const nowPlaying = await getNowPlaying();
-      const popular = await getPopularMovies();
-      this.props.addNowPlaying(nowPlaying);
-      this.props.addPopular(popular);
+      const nowPlaying = await call.getNowPlaying();
+      const popular = await call.getPopularMovies();
+      const dramas = await call.getPopularDramas();
+      const actions = await call.getPopularAction();
+      const animated = await call.getPopularAnimated();
+      const comedies = await call.getPopularComedies();
+      const horrors = await call.getPopularHorror();
+      const sciFi = await call.getPopularSciFi();
+      addNowPlaying(nowPlaying);
+      addPopular(popular);
+      addDramas(dramas);
+      addActions(actions);
+      addAnimated(animated);
+      addComedies(comedies);
+      addHorrors(horrors);
+      addSciFi(sciFi);
     } catch (error) {
       this.setState({
         errors: error.message
