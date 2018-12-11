@@ -5,13 +5,16 @@ import { loginUser, getFavorites } from '../../helpers/apiCalls';
 import { setCurrentUser, setCurrentView } from '../../actions/userActions';
 import { populateFavoritesState } from '../../actions/movieActions';
 import { setLoginErrorState } from '../../actions/errorActions';
+import Modal from 'react-responsive-modal';
+
 import './Login.css';
 export class Login extends Component {
   constructor() {
     super();
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      displayModal: true
     };
   }
 
@@ -23,6 +26,10 @@ export class Login extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+  };
+
+  closeModal = () => {
+    this.props.history.push('/');
   };
 
   setFavoritesState = async () => {
@@ -75,32 +82,35 @@ export class Login extends Component {
 
   render() {
     const { error } = this.props;
+    const { displayModal } = this.state;
     return (
-      <section className="login-user">
-        <section className="login-header">
-          <h3 className="login-title">Login</h3>
+      <Modal open={displayModal} center onClose={this.closeModal}>
+        <section className="login-user">
+          <section className="login-header">
+            <h3 className="login-title">Login</h3>
+          </section>
+          <form onSubmit={this.handleSubmit} className="login-user-form">
+            {error && <p className="error-message">{error}</p>}
+            <input
+              className="login-email"
+              onChange={this.handleChange}
+              type="email"
+              name="email"
+              value={this.state.email}
+              placeholder="Email..."
+            />
+            <input
+              className="login-password"
+              onChange={this.handleChange}
+              type="password"
+              name="password"
+              value={this.state.password}
+              placeholder="Password..."
+            />
+            <button className="login-submit-button">Submit</button>
+          </form>
         </section>
-        <form onSubmit={this.handleSubmit} className="login-user-form">
-          {error && <p className="error-message">{error}</p>}
-          <input
-            className="login-email"
-            onChange={this.handleChange}
-            type="email"
-            name="email"
-            value={this.state.email}
-            placeholder="Email..."
-          />
-          <input
-            className="login-password"
-            onChange={this.handleChange}
-            type="password"
-            name="password"
-            value={this.state.password}
-            placeholder="Password..."
-          />
-          <button className="login-submit-button">Submit</button>
-        </form>
-      </section>
+      </Modal>
     );
   }
 }
