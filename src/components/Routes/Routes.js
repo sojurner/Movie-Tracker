@@ -7,13 +7,6 @@ import CardContainer from '../../containers/CardContainer/CardContainer.js';
 export const Routes = () => {
   return (
     <Switch>
-      <Route
-        exact
-        path="/"
-        render={() => {
-          return <CardContainer category={'nowPlaying'} />;
-        }}
-      />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route
