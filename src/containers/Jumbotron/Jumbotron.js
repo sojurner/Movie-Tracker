@@ -54,7 +54,7 @@ export class Jumbotron extends Component {
     const jumboMovies = nowPlayingMovies.slice(0, 20);
 
     return (
-      <div className={!currentView ? `jumbotron` : `jumbotron-half`}>
+      <div className="jumbotron">
         {jumboMovies[currentIndex] && (
           <Slide
             currentView={currentView}
