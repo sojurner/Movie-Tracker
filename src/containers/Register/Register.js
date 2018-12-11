@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { registerUser } from '../../helpers/apiCalls';
 import { setCurrentUser, setCurrentView } from '../../actions/userActions';
 import { setRegisterErrorState } from '../../actions/errorActions';
+import Modal from 'react-responsive-modal';
+
 import './Register.css';
 
 export class Register extends Component {
@@ -12,7 +14,8 @@ export class Register extends Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      displayModal: true
     };
   }
 
@@ -70,46 +73,48 @@ export class Register extends Component {
   };
 
   render() {
-    const { name, email, password } = this.state;
+    const { name, email, password, displayModal } = this.state;
     const { error } = this.props;
 
     return (
-      <section className="register-user">
-        <section className="register-header">
-          <h3 className="register-title">Register</h3>
+      <Modal open={displayModal} center onClose={this.handleBrowse}>
+        <section className="register-user">
+          <section className="register-header">
+            <h3 className="register-title">Register</h3>
+          </section>
+          <form onSubmit={this.handleSubmit} className="register-form">
+            {error && <p className="error-message">{error}</p>}
+            <input
+              onChange={this.handleChange}
+              value={name}
+              name="name"
+              type="text"
+              placeholder="First Name"
+              className="register-name"
+            />
+            <input
+              onChange={this.handleChange}
+              value={email}
+              name="email"
+              type="email"
+              placeholder="Email"
+              className="register-email"
+            />
+            <input
+              onChange={this.handleChange}
+              value={password}
+              name="password"
+              type="password"
+              placeholder="Password"
+              className="register-password"
+            />
+            <button className="register-btn">Submit</button>
+            <button className="register-browse" onClick={this.handleBrowse}>
+              Browse As Guest
+            </button>
+          </form>
         </section>
-        <form onSubmit={this.handleSubmit} className="register-form">
-          {error && <p className="error-message">{error}</p>}
-          <input
-            onChange={this.handleChange}
-            value={name}
-            name="name"
-            type="text"
-            placeholder="First Name"
-            className="register-name"
-          />
-          <input
-            onChange={this.handleChange}
-            value={email}
-            name="email"
-            type="email"
-            placeholder="Email"
-            className="register-email"
-          />
-          <input
-            onChange={this.handleChange}
-            value={password}
-            name="password"
-            type="password"
-            placeholder="Password"
-            className="register-password"
-          />
-          <button className="register-btn">Submit</button>
-          <button className="register-browse" onClick={this.handleBrowse}>
-            Browse As Guest
-          </button>
-        </form>
-      </section>
+      </Modal>
     );
   }
 }
