@@ -10,6 +10,7 @@ import { setCurrentUser } from '../../actions/userActions.js';
 import Navigation from '../Navigation/Navigation';
 import Routes from '../../components/Routes/Routes';
 import Jumbotron from '../Jumbotron/Jumbotron';
+import CardContainer from '../CardContainer/CardContainer.js';
 
 import './App.css';
 
@@ -63,7 +64,7 @@ export class App extends Component {
 
   render() {
     const { path } = this.state;
-    const { currentView, nowPlaying } = this.props;
+    const { nowPlaying } = this.props;
     return (
       <div>
         <Router>
@@ -75,15 +76,10 @@ export class App extends Component {
             <header className="container header-container">
               <Navigation />
             </header>
-            <main
-              className={
-                !currentView
-                  ? `container main-container`
-                  : `container half-container`
-              }
-            >
+            <main className={`container main-container`}>
               <Jumbotron path={path} />
               <Routes />
+              <CardContainer category={'nowPlaying'} />;
             </main>
           </div>
         </Router>
