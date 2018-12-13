@@ -8,6 +8,30 @@ import { clearFavorites } from '../../actions/movieActions';
 import './Navigation.css';
 
 export class Navigation extends Component {
+  state = {
+    previous: 0,
+    current: 0
+  };
+  componentDidMount() {
+    window.addEventListener('scroll', e => this.handleScroll(e), true);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll, true);
+  }
+
+  handleScroll = event => {
+    let { scrollTop } = event.srcElement;
+    this.setState(prev => {
+      if (prev.current !== scrollTop) {
+        return {
+          previous: prev.current,
+          current: scrollTop
+        };
+      }
+    });
+  };
+
   logoutUser = () => {
     const { setCurrentUser, clearFavorites, history } = this.props;
     setCurrentUser(null);
@@ -16,8 +40,15 @@ export class Navigation extends Component {
   };
 
   render() {
+    const { current, previous } = this.state;
     return (
-      <section className="navigation">
+      <header
+        className={
+          current > previous
+            ? 'header-container header-container-hide'
+            : 'header-container'
+        }
+      >
         <Link to="/" className="nav-link brand">
           <i className="fas fa-film" />
           MovieTracker
@@ -53,7 +84,7 @@ export class Navigation extends Component {
             </div>
           )}
         </nav>
-      </section>
+      </header>
     );
   }
 }

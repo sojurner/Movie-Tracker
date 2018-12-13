@@ -9,12 +9,32 @@
   font-family: xtreem;
 }
 
-.navigation {
+.header-container {
+  height: 4rem;
   width: 100vw;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  background: #00b3db9f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #00445a,
+    #0f6b80
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #00445aad,
+    #0f6b8095
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  position: fixed;
+  transition: 0.4s;
+}
+
+.header-container-hide {
+  top: -4rem;
+  transition: 0.4s;
 }
 
 i {
@@ -33,7 +53,7 @@ i {
   justify-content: start;
   text-decoration: none;
   color: #fff;
-  margin: 1rem 0 0rem 2rem;
+  margin: 1.5rem 0 0rem 2rem;
 }
 
 .nav-link-register,
