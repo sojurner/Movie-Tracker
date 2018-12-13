@@ -23,3 +23,19 @@
 .styles_closeButton__20ID4:hover {
   background-color: #f43636;
 }
+
+.error-modal {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-msg,
+.fa-frown {
+  color: rgb(208, 208, 208);
+}
+
+.fa-frown {
+  margin: auto;
+  font-size: 3rem;
+}
