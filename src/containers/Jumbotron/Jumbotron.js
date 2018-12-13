@@ -14,7 +14,8 @@ export class Jumbotron extends Component {
     this.state = {
       currentIndex: 0,
       trailer: '',
-      displayModal: false
+      displayModal: false,
+      error: null
     };
   }
 
@@ -37,11 +38,12 @@ export class Jumbotron extends Component {
 
   handleTrailerClick = async movieId => {
     const trailerLink = await getMovieTrailer(movieId);
-    const trailer = `https://www.youtube.com/embed/${
-      trailerLink.results[0].key
-    }?autoplay=1&mute=1`;
-
-    this.setState({ trailer, displayModal: true });
+    if (trailerLink) {
+      const trailer = `https://www.youtube.com/embed/${trailerLink}?autoplay=1&mute=1`;
+      this.setState({ trailer, displayModal: true });
+    } else {
+      this.setState({ displayModal: true, error: 'Trailer Unavailable' });
+    }
   };
 
   onCloseModal = () => {
@@ -49,7 +51,7 @@ export class Jumbotron extends Component {
   };
 
   render() {
-    const { currentIndex } = this.state;
+    const { currentIndex, error, trailer, displayModal } = this.state;
     const { nowPlayingMovies, currentView } = this.props;
     const jumboMovies = nowPlayingMovies.slice(0, 20);
 
@@ -83,9 +85,10 @@ export class Jumbotron extends Component {
           </div>
         </section>
         <TrailerModal
-          trailer={this.state.trailer}
-          displayModal={this.state.displayModal}
+          trailer={trailer}
+          displayModal={displayModal}
           onCloseModal={this.onCloseModal}
+          error={error}
         />
       </div>
     );
