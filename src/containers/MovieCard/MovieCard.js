@@ -17,7 +17,8 @@ export class MovieCard extends Component {
     this.state = {
       hover: false,
       displayModal: false,
-      trailer: ''
+      trailer: '',
+      error: null
     };
   }
 
@@ -55,11 +56,12 @@ export class MovieCard extends Component {
 
   handleMovieClick = async movieId => {
     const trailerLink = await call.getMovieTrailer(movieId);
-    const trailer = `https://www.youtube.com/embed/${
-      trailerLink.results[0].key
-    }?autoplay=1&mute=1`;
-
-    this.setState({ trailer, displayModal: true });
+    if (trailerLink) {
+      const trailer = `https://www.youtube.com/embed/${trailerLink}?autoplay=1&mute=1`;
+      this.setState({ trailer, displayModal: true });
+    } else {
+      this.setState({ displayModal: true, error: 'Trailer Unavailable' });
+    }
   };
 
   hoverOn = () => {
@@ -76,6 +78,7 @@ export class MovieCard extends Component {
   };
 
   render() {
+    const { hover, trailer, error, displayModal } = this.state;
     const {
       release_date,
       overview,
@@ -93,7 +96,7 @@ export class MovieCard extends Component {
           backgroundImage: `url(${poster_path})`
         }}
       >
-        <div className={this.state.hover ? 'overlay' : 'display-none'}>
+        <div className={hover ? 'overlay' : 'display-none'}>
           <p>
             <i className="far fa-calendar-alt" />{' '}
             {moment(release_date).format('MMM Do YY')}
@@ -122,9 +125,10 @@ export class MovieCard extends Component {
           <p className="favorite-error">{this.props.error}</p>
         </div>
         <TrailerModal
-          trailer={this.state.trailer}
-          displayModal={this.state.displayModal}
+          trailer={trailer}
+          displayModal={displayModal}
           onCloseModal={this.onCloseModal}
+          error={error}
         />
       </div>
     );
