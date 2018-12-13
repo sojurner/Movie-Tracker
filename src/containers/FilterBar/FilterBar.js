@@ -13,16 +13,22 @@ export class FilterBar extends Component {
     this.state = {
       searchInput: '',
       suggestions: null,
-      selectedMovie: false
+      selectedMovie: false,
+      inputActive: false
     };
   }
 
   searchMovies = async event => {
     event.preventDefault();
-    const { selectedMovie } = this.state;
-    const result = await getMoviesBySearch(selectedMovie);
-    this.props.setSearchedMovies(result);
-    this.setState({ searchInput: '' });
+    const { selectedMovie, inputActive } = this.state;
+    this.setState({ inputActive: !inputActive });
+    if (inputActive) {
+      if (selectedMovie) {
+        const result = await getMoviesBySearch(selectedMovie);
+        this.props.setSearchedMovies(result);
+        this.setState({ searchInput: '' });
+      }
+    }
   };
 
   setSearchInput = event => {
@@ -39,19 +45,28 @@ export class FilterBar extends Component {
   };
 
   render() {
-    const { suggestions } = this.state;
+    const { suggestions, inputActive } = this.state;
     return (
       <div className="search-container">
         <form className="filter-form" onSubmit={this.searchMovies}>
           <input
-            className="movie-input"
+            className={
+              !inputActive ? `movie-input` : `movie-input movie-input-active`
+            }
             placeholder="Enter Movie"
             type="text"
             name="searchInput"
             onChange={this.setSearchInput}
             value={this.state.searchInput}
           />
-          <button className="search-button" type="submit">
+          <button
+            className={
+              !inputActive
+                ? `search-button`
+                : `search-button search-button-active`
+            }
+            type="submit"
+          >
             🔍
           </button>
         </form>
