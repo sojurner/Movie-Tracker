@@ -6,7 +6,9 @@
   overflow-scroll-y: auto; }
 
 .carousel-container {
-  scroll-snap-align: start; }
+  padding-top: 0.5rem;
+  scroll-snap-align: start;
+  border-bottom: 1.5px solid rgba(17, 56, 104, 0.338); }
 
 .alice-carousel__wrapper {
   width: 82%;
