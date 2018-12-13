@@ -73,9 +73,7 @@ export class App extends Component {
               <img src="https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwicia_T7YTfAhXGmOAKHZkHDd4QjRx6BAgBEAU&url=https%3A%2F%2Fdribbble.com%2Fshots%2F2236318-Gooey-Effect-Infinity-Spinner-Loader&psig=AOvVaw1sCSKgJKFf0nnjB73NmmM5&ust=1543967477929265" />
             )}
             <FilterBar />
-            <header className="container header-container">
-              <Navigation />
-            </header>
+            <Navigation />
             <main className={`container main-container`}>
               <Jumbotron path={path} />
               <Routes />
