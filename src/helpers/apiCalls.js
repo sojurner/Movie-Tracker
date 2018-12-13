@@ -189,6 +189,9 @@ export const getMovieTrailer = async id => {
     process.env.REACT_APP_TMDB_API_KEY
   }`;
   const videoResponse = await fetch(url);
-  const videoInfo = await videoResponse.json();
-  return videoInfo;
+  const vidResults = await videoResponse.json();
+  if (vidResults.results.length) {
+    return vidResults.results.find(vid => vid.type === 'Trailer').key;
+  }
+  return null;
 };
