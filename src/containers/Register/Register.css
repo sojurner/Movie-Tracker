@@ -3,21 +3,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3rem 0 0 0; }
+  margin: 1rem 0 0 0; }
 
 .register-user {
   background-color: #054555ab;
-  animation: slideInRight 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  padding: 2rem; }
+  padding: 2rem;
+  border-radius: 1rem; }
 
 .register-header {
   display: flex;
-  background-color: #075669ab;
+  align-content: start;
   justify-content: center; }
 
 .register-title {
   font-family: xtreem;
   color: #83a8b1;
+  margin: 0 0 2rem 0;
   letter-spacing: 10px;
   text-shadow: 1px 1px #999999;
   font-size: 3rem;
@@ -25,26 +26,21 @@
   z-index: 10;
   justify-self: center; }
 
-.register-name {
-  height: 3rem;
-  width: 25rem;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  border-radius: 0.5rem;
-  outline: none;
-  border: 1px #01708b solid;
-  padding-left: 1rem; }
+.register-icon-input {
+  position: relative;
+  height: max-content; }
 
-.register-email {
-  height: 3rem;
-  width: 25rem;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  border-radius: 0.5rem;
-  outline: none;
-  border: 1px #00aad5 solid;
-  padding-left: 1rem; }
+.fa-envelope-square,
+.fa-user,
+.fa-key {
+  position: absolute;
+  top: 1rem;
+  left: 0.4rem;
+  color: #999999;
+  font-size: 1.2rem; }
 
+.register-name,
+.register-email,
 .register-password {
   height: 3rem;
   width: 25rem;
@@ -52,36 +48,56 @@
   margin-bottom: 1.5rem;
   border-radius: 0.5rem;
   outline: none;
-  border: 1px #00aad5 solid;
-  padding-left: 1rem; }
+  background: #afcfd7;
+  border: 1px #01708b solid;
+  padding-left: 2rem;
+  transition: 0.3s linear; }
+  .register-name:hover,
+  .register-email:hover,
+  .register-password:hover {
+    box-shadow: 1px 1px 3px #bababa6d, 0 0 5px #6464d7;
+    border: 1.1px #1a0c0c solid;
+    background-color: #dcdcdc; }
 
 .register-btn,
 .register-browse {
   background-color: #077d9b;
   height: 3rem;
-  width: 25rem;
+  width: 9rem;
   font-size: 1.5rem;
   border-radius: 1rem;
-  color: #fff;
-  cursor: pointer; }
+  color: #2a2a66;
+  cursor: pointer;
+  transition: 0.3s linear; }
   .register-btn:hover,
   .register-browse:hover {
-    color: #2a2a66;
-    background-color: #8bbae6; }
-
-.register-browse {
-  margin-top: 1rem; }
+    color: #e8e8e8;
+    background-color: #558dc1; }
 
 .error-message {
   margin: 0 0 0.5rem 0;
   text-align: center;
   color: crimson; }
 
-@keyframes slideInRight {
-  from {
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-    visibility: visible; }
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); } }
+.register-buttons {
+  width: 25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 1rem; }
+
+.fa-eye,
+.fa-play {
+  margin-left: 0.5rem;
+  font-size: 1.2rem; }
+
+.login-redirect {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  color: #478898;
+  cursor: pointer;
+  transition: 0.3s; }
+
+.login-redirect:hover {
+  text-decoration-line: underline;
+  color: #00aad5; }

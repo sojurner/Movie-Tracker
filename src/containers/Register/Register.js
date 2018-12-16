@@ -72,6 +72,10 @@ export class Register extends Component {
     this.props.history.push('/');
   };
 
+  handleRedirect = () => {
+    this.props.history.push('/login');
+  };
+
   render() {
     const { name, email, password, displayModal } = this.state;
     const { error } = this.props;
@@ -84,34 +88,53 @@ export class Register extends Component {
           </section>
           <form onSubmit={this.handleSubmit} className="register-form">
             {error && <p className="error-message">{error}</p>}
-            <input
-              onChange={this.handleChange}
-              value={name}
-              name="name"
-              type="text"
-              placeholder="First Name"
-              className="register-name"
-            />
-            <input
-              onChange={this.handleChange}
-              value={email}
-              name="email"
-              type="email"
-              placeholder="Email"
-              className="register-email"
-            />
-            <input
-              onChange={this.handleChange}
-              value={password}
-              name="password"
-              type="password"
-              placeholder="Password"
-              className="register-password"
-            />
-            <button className="register-btn">Submit</button>
-            <button className="register-browse" onClick={this.handleBrowse}>
-              Browse As Guest
-            </button>
+            <div className="register-icon-input">
+              <i className="fas fa-user" />
+              <input
+                onChange={this.handleChange}
+                value={name}
+                name="name"
+                type="text"
+                placeholder="Full Name"
+                className="register-name"
+              />
+            </div>
+            <div className="register-icon-input">
+              <i className="fas fa-envelope-square" />
+              <input
+                onChange={this.handleChange}
+                value={email}
+                name="email"
+                type="email"
+                placeholder="Email"
+                className="register-email"
+              />
+            </div>
+            <div className="register-icon-input">
+              <i className="fas fa-key" />
+              <input
+                onChange={this.handleChange}
+                value={password}
+                name="password"
+                type="password"
+                placeholder="Password"
+                className="register-password"
+              />
+            </div>
+            <div className="register-buttons">
+              <button className="register-btn">
+                Register
+                <i className="fas fa-play" />
+              </button>
+
+              <button className="register-browse" onClick={this.handleBrowse}>
+                Browse
+                <i className="far fa-eye" />
+              </button>
+            </div>
+            <p onClick={this.handleRedirect} className="login-redirect">
+              I already have an account
+            </p>
           </form>
         </section>
       </Modal>
