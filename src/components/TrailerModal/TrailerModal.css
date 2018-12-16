@@ -4,7 +4,8 @@
   padding: 0rem;
   background: #454545c6;
   background-clip: padding-box;
-  margin: auto; }
+  margin: auto;
+  border-radius: 1rem; }
 
 .styles_closeButton__20ID4 {
   position: absolute;
