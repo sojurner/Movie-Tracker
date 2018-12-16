@@ -1,9 +1,9 @@
 .login-user {
   justify-content: center;
   background-color: #064453ab;
-  animation: slideInRight 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   width: 30rem;
-  height: 35rem; }
+  height: 35rem;
+  border-radius: 1rem; }
 
 .login-user-form {
   display: flex;
@@ -13,12 +13,13 @@
   justify-content: center;
   -ms-flex-align: center;
   align-items: center;
-  margin: 3rem 0 0 0; }
+  margin: 3rem 0 0 0;
+  border-radius: 1rem; }
 
 .login-header {
   width: 100%;
-  background-color: #075669ab;
-  padding: 6.5rem 0 1.5rem 0;
+  border-radius: 1rem;
+  padding: 4.5rem 0 1.5rem 0;
   display: flex;
   justify-content: center; }
 
@@ -28,36 +29,57 @@
   letter-spacing: 10px;
   text-shadow: 1px 1px #999999;
   font-size: 3.5rem;
-  margin: 0 0 1rem 0; }
+  margin: 0 0 0rem 0; }
 
-.login-email {
-  height: 3rem;
-  width: 25rem;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  border-radius: 0.5rem;
-  outline: none;
-  border: 1px #00aad5 solid;
-  padding-left: 1rem; }
+.login-icon-input {
+  position: relative; }
 
+.login-email,
 .login-password {
   height: 3rem;
-  width: 25rem;
+  width: 20rem;
   font-size: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   border-radius: 0.5rem;
+  outline: none;
+  background: #afcfd7;
   border: 1px #00aad5 solid;
-  padding-left: 1rem; }
+  padding-left: 2rem; }
+  .login-email:hover,
+  .login-password:hover {
+    box-shadow: 1px 1px 3px #bababa6d, 0 0 5px #6464d7;
+    border: 1.1px #1a0c0c solid;
+    background-color: #dcdcdc; }
 
 .login-submit-button {
   background-color: #00aad5;
   height: 3rem;
-  width: 25rem;
+  width: 8.5rem;
+  margin-top: 1rem;
   font-size: 1.5rem;
   border-radius: 0.5rem;
-  color: #fff; }
+  color: #2a2a66;
+  transition: 0.3s;
+  cursor: pointer; }
+  .login-submit-button:hover {
+    color: #d0d0d0;
+    background-color: #558dc1; }
+
+.login-submit-button i {
+  margin-left: 0.3rem; }
 
 .error-message {
   margin: 0 0 0.5rem 0;
   text-align: center;
   color: crimson; }
+
+.register-redirect {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  color: #478898;
+  cursor: pointer;
+  transition: 0.3s; }
+
+.register-redirect:hover {
+  text-decoration-line: underline;
+  color: #00aad5; }

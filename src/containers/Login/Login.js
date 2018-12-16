@@ -80,6 +80,10 @@ export class Login extends Component {
     }
   };
 
+  handleRedirect = () => {
+    this.props.history.push('/register');
+  };
+
   render() {
     const { error } = this.props;
     const { displayModal } = this.state;
@@ -91,23 +95,34 @@ export class Login extends Component {
           </section>
           <form onSubmit={this.handleSubmit} className="login-user-form">
             {error && <p className="error-message">{error}</p>}
-            <input
-              className="login-email"
-              onChange={this.handleChange}
-              type="email"
-              name="email"
-              value={this.state.email}
-              placeholder="Email..."
-            />
-            <input
-              className="login-password"
-              onChange={this.handleChange}
-              type="password"
-              name="password"
-              value={this.state.password}
-              placeholder="Password..."
-            />
-            <button className="login-submit-button">Submit</button>
+            <div className="login-icon-input">
+              <i className="fas fa-envelope-square fa_mail" />
+              <input
+                className="login-email"
+                onChange={this.handleChange}
+                type="email"
+                name="email"
+                value={this.state.email}
+                placeholder="Email..."
+              />
+            </div>
+            <div className="login-icon-input">
+              <i className="fas fa-key fa_key" />
+              <input
+                className="login-password"
+                onChange={this.handleChange}
+                type="password"
+                name="password"
+                value={this.state.password}
+                placeholder="Password..."
+              />
+            </div>
+            <button className="login-submit-button">
+              Login <i className="fas fa-sign-in-alt" />
+            </button>
+            <p className="register-redirect" onClick={this.handleRedirect}>
+              Don't have an account?
+            </p>
           </form>
         </section>
       </Modal>
