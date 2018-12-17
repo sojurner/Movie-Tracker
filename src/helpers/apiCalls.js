@@ -1,4 +1,4 @@
-import { movieCleaner } from './dataCleaners';
+import { movieCleaner, similarMovieCleaner } from './dataCleaners';
 
 export const getNowPlaying = async () => {
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${
@@ -80,6 +80,15 @@ export const getMoviesBySearch = async query => {
   const response = await fetch(url);
   const matches = await response.json();
   return movieCleaner(matches);
+};
+
+export const getSimilarMovies = async id => {
+  const url = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${
+    process.env.REACT_APP_TMDB_API_KEY
+  }`;
+
+  const result = await (await fetch(url)).json();
+  return similarMovieCleaner(result.results);
 };
 
 export const registerUser = async user => {
