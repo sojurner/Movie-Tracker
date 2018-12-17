@@ -50,7 +50,11 @@ export class SearchResults extends Component {
                 onMouseLeave={this.toggleSuggestions.bind(null, null)}
               >
                 <div className="search_movie-card">
-                  <img className="search_movie-poster" src={item.poster_path} />
+                  <img
+                    className="search_movie-poster"
+                    alt="film posters"
+                    src={item.poster_path}
+                  />
                   <section className="search_movie-content">
                     <h2 className="search_movie-title">{item.title}</h2>
                     <p className="search_movie-description">{item.overview}</p>

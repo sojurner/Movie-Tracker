@@ -41,22 +41,22 @@ export class App extends Component {
       addSciFi
     } = this.props;
     try {
-      const nowPlaying = await call.getNowPlaying();
-      const popular = await call.getPopularMovies();
-      const dramas = await call.getPopularDramas();
-      const actions = await call.getPopularAction();
-      const animated = await call.getPopularAnimated();
-      const comedies = await call.getPopularComedies();
-      const horrors = await call.getPopularHorror();
-      const sciFi = await call.getPopularSciFi();
-      addNowPlaying(nowPlaying);
-      addPopular(popular);
-      addDramas(dramas);
-      addActions(actions);
-      addAnimated(animated);
-      addComedies(comedies);
-      addHorrors(horrors);
-      addSciFi(sciFi);
+      // const nowPlaying = await call.getNowPlaying();
+      // const popular = await call.getPopularMovies();
+      // const dramas = await call.getPopularDramas();
+      // const actions = await call.getPopularAction();
+      // const animated = await call.getPopularAnimated();
+      // const comedies = await call.getPopularComedies();
+      // const horrors = await call.getPopularHorror();
+      // const sciFi = await call.getPopularSciFi();
+      // addNowPlaying(nowPlaying);
+      // addPopular(popular);
+      // addDramas(dramas);
+      // addActions(actions);
+      // addAnimated(animated);
+      // addComedies(comedies);
+      // addHorrors(horrors);
+      // addSciFi(sciFi);
     } catch (error) {
       this.setState({
         errors: error.message
