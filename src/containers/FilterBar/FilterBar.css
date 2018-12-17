@@ -57,7 +57,9 @@
   position: absolute;
   right: -10rem;
   top: 0.1rem;
-  transition: 0.4s; }
+  transition: 0.4s;
+  padding: 0.35rem 0.4rem 0.1rem 0.7rem;
+  text-decoration: none; }
 
 .search-button-active {
   right: -17rem;
