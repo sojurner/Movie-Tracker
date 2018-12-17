@@ -10,6 +10,7 @@ const initialState = {
   horror: [],
   sciFi: [],
   searched: null,
+  similar: null,
   favorites: [],
   trailer: ''
 };
@@ -68,6 +69,24 @@ export const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         searched: action.movies
+      };
+
+    case 'RESET_SEARCH':
+      return {
+        ...state,
+        searched: null
+      };
+
+    case 'SET_SIMILAR_MOVIES':
+      return {
+        ...state,
+        similar: action.movies
+      };
+
+    case 'RESET_SIMILAR':
+      return {
+        ...state,
+        similar: null
       };
 
     case 'TOGGLE_MOVIE_STATUS': {
