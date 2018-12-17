@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setSearchedMovies } from '../../actions/movieActions';
-import { getMoviesBySearch } from '../../helpers/apiCalls';
+import { NavLink } from 'react-router-dom';
+
 import { Suggestions } from '../../components/Suggestions/Suggestions';
 
-import './FilterBar.css';
+import { setSearchedMovies } from '../../actions/movieActions';
+import { getMoviesBySearch } from '../../helpers/apiCalls';
 import { getSuggestions } from '../../helpers/autoSuggest';
+import './FilterBar.css';
 
 export class FilterBar extends Component {
   constructor() {
@@ -13,20 +15,19 @@ export class FilterBar extends Component {
     this.state = {
       searchInput: '',
       suggestions: null,
-      selectedMovie: false,
+      selectedMovie: null,
       inputActive: false
     };
   }
 
-  searchMovies = async event => {
-    event.preventDefault();
+  searchMovies = async () => {
     const { selectedMovie, inputActive } = this.state;
     this.setState({ inputActive: !inputActive });
     if (inputActive) {
       if (selectedMovie) {
         const result = await getMoviesBySearch(selectedMovie);
         this.props.setSearchedMovies(result);
-        this.setState({ searchInput: '' });
+        this.setState({ searchInput: '', selectedMovie: null });
       }
     }
   };
@@ -48,7 +49,7 @@ export class FilterBar extends Component {
     const { suggestions, inputActive } = this.state;
     return (
       <div className="search-container">
-        <form className="filter-form" onSubmit={this.searchMovies}>
+        <form className="filter-form">
           <input
             className={
               !inputActive ? `movie-input` : `movie-input movie-input-active`
@@ -59,16 +60,18 @@ export class FilterBar extends Component {
             onChange={this.setSearchInput}
             value={this.state.searchInput}
           />
-          <button
+          <NavLink
+            exact
+            to="/search"
+            onClick={this.searchMovies}
             className={
               !inputActive
                 ? `search-button`
                 : `search-button search-button-active`
             }
-            type="submit"
           >
             🔍
-          </button>
+          </NavLink>
         </form>
         {suggestions && (
           <Suggestions
