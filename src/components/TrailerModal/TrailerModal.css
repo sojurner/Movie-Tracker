@@ -1,11 +1,15 @@
+.styles_overlay__CLSq- {
+  background: rgba(19, 19, 19, 0.63); }
+
 .styles_modal__gNwvD {
   max-width: 60rem;
   position: relative;
   padding: 0rem;
-  background: #454545c6;
+  background: #095669;
   background-clip: padding-box;
   margin: auto;
-  border-radius: 1rem; }
+  border-radius: 1rem;
+  border: 3px solid #3d6264; }
 
 .styles_closeButton__20ID4 {
   position: absolute;

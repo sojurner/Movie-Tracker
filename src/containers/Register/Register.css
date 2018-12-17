@@ -71,8 +71,8 @@
   transition: 0.3s linear; }
   .register-btn:hover,
   .register-browse:hover {
-    color: #e8e8e8;
-    background-color: #558dc1; }
+    color: #83a8b1;
+    background-color: #3574af; }
 
 .error-message {
   margin: 0 0 0.5rem 0;

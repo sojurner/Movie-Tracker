@@ -63,19 +63,19 @@
 }
 
 .login-submit-button {
-  background-color: #00aad5;
+  background-color: #1f7085;
   height: 3rem;
   width: 8.5rem;
   margin-top: 1rem;
   font-size: 1.5rem;
   border-radius: 0.5rem;
-  color: rgb(42, 42, 102);
+  color: rgb(38, 69, 94);
   transition: 0.3s;
   cursor: pointer;
 
   &:hover {
-    color: rgb(208, 208, 208);
-    background-color: rgb(85, 141, 193);
+    color: #83a8b1;
+    background-color: rgb(47, 100, 150);
   }
 }
 

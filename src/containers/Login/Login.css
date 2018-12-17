@@ -52,18 +52,18 @@
     background-color: #dcdcdc; }
 
 .login-submit-button {
-  background-color: #00aad5;
+  background-color: #1f7085;
   height: 3rem;
   width: 8.5rem;
   margin-top: 1rem;
   font-size: 1.5rem;
   border-radius: 0.5rem;
-  color: #2a2a66;
+  color: #26455e;
   transition: 0.3s;
   cursor: pointer; }
   .login-submit-button:hover {
-    color: #d0d0d0;
-    background-color: #558dc1; }
+    color: #83a8b1;
+    background-color: #2f6496; }
 
 .login-submit-button i {
   margin-left: 0.3rem; }
