@@ -6,7 +6,9 @@ export const movieCleaner = data => {
     return {
       movie_id: result.id,
       title: result.title,
-      release_date: moment(result.release_date).format('MMM D, YYYY'),
+      release_date: moment(result.release_date.replace(/-/g, '')).format(
+        'MMM D, YYYY'
+      ),
       overview: result.overview,
       vote_average: result.vote_average,
       backdrop_path: `http://image.tmdb.org/t/p/original${
@@ -24,7 +26,9 @@ export const similarMovieCleaner = data => {
     return {
       movie_id: result.id,
       title: result.title,
-      release_date: moment(result.release_date).format('MMM D, YYYY'),
+      release_date: moment(result.release_date.replace(/-/g, '')).format(
+        'MMM D, YYYY'
+      ),
       overview: result.overview,
       vote_average: result.vote_average,
       backdrop_path: `http://image.tmdb.org/t/p/original${
