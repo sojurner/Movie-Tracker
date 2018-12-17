@@ -43,6 +43,19 @@ export const setSearchedMovies = movies => ({
   movies
 });
 
+export const resetSearch = () => ({
+  type: 'RESET_SEARCH'
+});
+
+export const setSimilarMovies = movies => ({
+  type: 'SET_SIMILAR_MOVIES',
+  movies
+});
+
+export const resetSimilar = () => ({
+  type: 'RESET_SIMILAR'
+});
+
 export const toggleMovieStatus = changedMovie => ({
   type: 'TOGGLE_MOVIE_STATUS',
   changedMovie
