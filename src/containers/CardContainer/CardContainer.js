@@ -8,7 +8,12 @@ import PropTypes from 'prop-types';
 
 import './CardContainer.css';
 
-export const CardContainer = ({ movies, category, setCurrentView }) => {
+export const CardContainer = ({
+  movies,
+  category,
+  setCurrentView,
+  similar
+}) => {
   const movieSections = [
     'nowPlaying',
     'popular',
@@ -61,50 +66,72 @@ export const CardContainer = ({ movies, category, setCurrentView }) => {
       items: 5
     }
   };
+  let movieSectionCarousel;
+  if (!similar) {
+    movieSectionCarousel = movieSections.map((section, index) => {
+      if (movies.hasOwnProperty(section)) {
+        const movieCards = movies[section].map(movie => {
+          return <MovieCard key={movie.movie_id} movie={movie} />;
+        });
 
-  const movieSectionCarousel = movieSections.map((section, index) => {
-    if (movies.hasOwnProperty(section)) {
-      const movieCards = movies[section].map(movie => {
-        return <MovieCard key={movie.movie_id} movie={movie} />;
-      });
-
-      return (
-        <div
-          className={`carousel-container carousel-${section}`}
-          key={`movie-${index}`}
-        >
-          <div className="carousel-header">
-            <span className="in-theaters-text">{section.toUpperCase()}</span>
-            <i className={icons[index]} />
-          </div>
-          <AliceCarousel
-            duration={400}
-            autoPlay={true}
-            startIndex={1}
-            fadeOutAnimation={true}
-            dotsDisabled={true}
-            mouseDragEnabled={true}
-            responsive={responsive}
-            autoPlayInterval={Math.random() * 3 * 1000 + 3000}
-            autoPlayDirection="rtl"
-            autoPlayActionDisabled={true}
+        return (
+          <div
+            className={`carousel-container carousel-${section}`}
+            key={`movie-${index}`}
           >
-            {movieCards}
-          </AliceCarousel>
+            <div className="carousel-header">
+              <span className="in-theaters-text">{section.toUpperCase()}</span>
+              <i className={icons[index]} />
+            </div>
+            <AliceCarousel
+              duration={400}
+              autoPlay={true}
+              startIndex={1}
+              fadeOutAnimation={true}
+              dotsDisabled={true}
+              mouseDragEnabled={true}
+              responsive={responsive}
+              autoPlayInterval={Math.random() * 3 * 1000 + 3000}
+              autoPlayDirection="rtl"
+              autoPlayActionDisabled={true}
+            >
+              {movieCards}
+            </AliceCarousel>
+          </div>
+        );
+      }
+    });
+    return <div>{movieSectionCarousel}</div>;
+  } else {
+    movieSectionCarousel = similar.map((movie, index) => {
+      return <MovieCard key={`similar-${index}`} movie={movie} />;
+    });
+    return (
+      <div className={`carousel-container carousel-similar`}>
+        <div className="carousel-header">
+          <span className="in-theaters-text">Similar</span>
         </div>
-      );
-    }
-  });
-  // const nowPlayingMovies = movies.nowPlaying.map(movie => {
-  //   return <MovieCard key={movie.movie_id} movie={movie} />;
-  // });
-
-  // const popularMovies = movies.popular.map(movie => {
-  //   return <MovieCard key={movie.movie_id} movie={movie} />;
-  // });
-
-  return <div>{movieSectionCarousel}</div>;
+        <AliceCarousel
+          duration={400}
+          autoPlay={true}
+          startIndex={1}
+          fadeOutAnimation={true}
+          dotsDisabled={true}
+          mouseDragEnabled={true}
+          responsive={responsive}
+          autoPlayInterval={Math.random() * 3 * 1000 + 3000}
+          autoPlayDirection="rtl"
+          autoPlayActionDisabled={true}
+        >
+          {movieSectionCarousel}
+        </AliceCarousel>
+      </div>
+    );
+  }
 };
+// const popularMovies = movies.popular.map(movie => {
+//   return <MovieCard key={movie.movie_id} movie={movie} />;
+// });
 
 CardContainer.propTypes = {
   movies: PropTypes.object.isRequired,
@@ -112,7 +139,8 @@ CardContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.movies,
+  similar: state.movies.similar
 });
 
 const mapDispatchToProps = dispatch => ({
