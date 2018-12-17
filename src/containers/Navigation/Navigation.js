@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import { setCurrentUser } from '../../actions/userActions';
-import { clearFavorites } from '../../actions/movieActions';
+import {
+  clearFavorites,
+  resetSearch,
+  resetSimilar
+} from '../../actions/movieActions';
 
 import './Navigation.css';
 
@@ -39,6 +43,11 @@ export class Navigation extends Component {
     history.replace('/');
   };
 
+  resetSearch = () => {
+    this.props.resetSearch();
+    this.props.resetSimilar();
+  };
+
   render() {
     const { current, previous } = this.state;
     return (
@@ -49,7 +58,7 @@ export class Navigation extends Component {
             : 'header-container'
         }
       >
-        <Link to="/" className="nav-link brand">
+        <Link to="/" onClick={this.resetSearch} className="nav-link brand">
           <i className="fas fa-film" />
           MovieTracker
         </Link>
@@ -75,10 +84,16 @@ export class Navigation extends Component {
                 exact
                 to="/register"
                 className="nav-link nav-link-register"
+                onClick={this.resetSearch}
               >
                 <i className="fas fa-user-plus" />
               </NavLink>
-              <NavLink exact to="/login" className="nav-link nav-link-login">
+              <NavLink
+                exact
+                to="/login"
+                onClick={this.resetSearch}
+                className="nav-link nav-link-login"
+              >
                 <i className="fas fa-sign-in-alt" />
               </NavLink>
             </div>
@@ -98,7 +113,9 @@ Navigation.propTypes = {
 
 export const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
-  clearFavorites: () => dispatch(clearFavorites())
+  clearFavorites: () => dispatch(clearFavorites()),
+  resetSearch: () => dispatch(resetSearch()),
+  resetSimilar: () => dispatch(resetSimilar())
 });
 
 export const mapStateToProps = state => ({
