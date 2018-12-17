@@ -59,7 +59,6 @@ export class Navigation extends Component {
         }
       >
         <Link to="/" onClick={this.resetSearch} className="nav-link brand">
-          <i className="fas fa-film" />
           MovieTracker
         </Link>
         <nav className="nav-btns">
