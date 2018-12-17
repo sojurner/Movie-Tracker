@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import * as call from '../../helpers/apiCalls.js';
 import FilterBar from '../FilterBar/FilterBar';
-import * as action from '../../actions/movieActions';
-import { setCurrentUser } from '../../actions/userActions.js';
 import Navigation from '../Navigation/Navigation';
 import Routes from '../../components/Routes/Routes';
 import Jumbotron from '../Jumbotron/Jumbotron';
 import CardContainer from '../CardContainer/CardContainer.js';
+import SearchResults from '../SearchResults/SearchResults';
+import { setCurrentUser } from '../../actions/userActions.js';
+
+import * as action from '../../actions/movieActions';
+import * as call from '../../helpers/apiCalls.js';
 
 import './App.css';
 
@@ -64,7 +66,7 @@ export class App extends Component {
 
   render() {
     const { path } = this.state;
-    const { nowPlaying } = this.props;
+    const { nowPlaying, searched } = this.props;
     return (
       <div>
         <Router>
@@ -74,11 +76,16 @@ export class App extends Component {
             )}
             <FilterBar />
             <Navigation />
-            <main className={`container main-container`}>
-              <Jumbotron path={path} />
-              <Routes />
-              <CardContainer category={'nowPlaying'} />;
-            </main>
+            {!searched && (
+              <main className={`container main-container`}>
+                <Jumbotron path={path} />
+                <Routes />
+                <CardContainer category={'nowPlaying'} />;
+              </main>
+            )}
+            {searched && (
+              <Route exact path="/search" component={SearchResults} />
+            )}
           </div>
         </Router>
       </div>
@@ -110,7 +117,8 @@ export const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   nowPlaying: state.movies.nowPlaying,
   currentUser: state.currentUser,
-  currentView: state.currentView
+  currentView: state.currentView,
+  searched: state.movies.searched
 });
 
 export default connect(
