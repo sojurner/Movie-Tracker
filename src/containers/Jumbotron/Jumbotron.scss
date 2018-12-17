@@ -6,6 +6,7 @@
   background-position: center center;
   background-repeat: no-repeat;
   scroll-snap-align: start;
+  transition: 0.3s linear;
 }
 
 .jumbotron-half {
@@ -31,17 +32,18 @@
 
 .arrows-icons-container-half {
   position: absolute;
-  width: 48%;
+  width: 100%;
   color: rgb(158, 158, 158);
 
-  top: 80%;
+  top: 50%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .jumbo-arrow {
   font-size: 3rem;
   cursor: pointer;
+  margin: 0 1.5rem;
 }
 
 .jumbo-arrow:hover {
