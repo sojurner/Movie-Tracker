@@ -7,7 +7,7 @@ export const Suggestions = ({ suggestions, selectMovie }) => {
       <div
         key={`suggestion-${index}`}
         className={`suggestion suggestion-${index}`}
-        onClick={event => selectMovie(event.target.textContent)}
+        onClick={selectMovie.bind(null, suggestion)}
       >
         {suggestion}
       </div>
