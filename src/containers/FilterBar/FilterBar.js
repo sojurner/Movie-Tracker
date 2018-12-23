@@ -15,20 +15,17 @@ export class FilterBar extends Component {
     this.state = {
       searchInput: '',
       suggestions: null,
-      selectedMovie: null,
       inputActive: false
     };
   }
 
   searchMovies = async () => {
-    const { selectedMovie, inputActive } = this.state;
+    const { searchInput, inputActive } = this.state;
     this.setState({ inputActive: !inputActive });
-    if (inputActive) {
-      if (selectedMovie) {
-        const result = await getMoviesBySearch(selectedMovie);
-        this.props.setSearchedMovies(result);
-        this.setState({ searchInput: '', selectedMovie: null });
-      }
+    if (inputActive && searchInput) {
+      const result = await getMoviesBySearch(searchInput);
+      this.props.setSearchedMovies(result);
+      this.setState({ searchInput: '', suggestions: null });
     }
   };
 
@@ -46,7 +43,7 @@ export class FilterBar extends Component {
   };
 
   render() {
-    const { suggestions, inputActive } = this.state;
+    const { suggestions, inputActive, searchInput } = this.state;
     return (
       <div className="search-container">
         <form className="filter-form">
@@ -62,7 +59,11 @@ export class FilterBar extends Component {
           />
           <NavLink
             exact
-            to="/search"
+            to={
+              !searchInput && !this.props.searchedMovies
+                ? '/'
+                : `/search/q=${searchInput}`
+            }
             onClick={this.searchMovies}
             className={
               !inputActive
@@ -84,11 +85,15 @@ export class FilterBar extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  searchedMovies: state.movies.searched
+});
+
 export const mapDispatchToProps = dispatch => ({
   setSearchedMovies: movies => dispatch(setSearchedMovies(movies))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(FilterBar);

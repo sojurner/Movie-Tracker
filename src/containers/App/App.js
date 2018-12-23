@@ -83,9 +83,7 @@ export class App extends Component {
                 <CardContainer category={'nowPlaying'} />;
               </main>
             )}
-            {searched && (
-              <Route exact path="/search" component={SearchResults} />
-            )}
+            {searched && <Route path="/search" component={SearchResults} />}
           </div>
         </Router>
       </div>
