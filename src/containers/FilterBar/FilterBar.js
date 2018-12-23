@@ -15,19 +15,23 @@ export class FilterBar extends Component {
     this.state = {
       searchInput: '',
       suggestions: null,
-      selectedMovie: null,
       inputActive: false
     };
   }
 
-  searchMovies = async () => {
-    const { selectedMovie, inputActive } = this.state;
+  searchMovies = async event => {
+    event.preventDefault();
+
+    const { searchInput, inputActive } = this.state;
     this.setState({ inputActive: !inputActive });
     if (inputActive) {
-      if (selectedMovie) {
-        const result = await getMoviesBySearch(selectedMovie);
+      if (searchInput) {
+        const result = await getMoviesBySearch(searchInput);
         this.props.setSearchedMovies(result);
-        this.setState({ searchInput: '', selectedMovie: null });
+        this.setState({
+          searchInput: '',
+          inputActive: !inputActive
+        });
       }
     }
   };
@@ -37,19 +41,18 @@ export class FilterBar extends Component {
     this.setState({ [name]: value, suggestions: getSuggestions(value) });
   };
 
-  selectMovie = selectedMovie => {
+  selectMovie = searchInput => {
     this.setState({
-      selectedMovie,
-      searchInput: selectedMovie,
+      searchInput,
       suggestions: null
     });
   };
 
   render() {
-    const { suggestions, inputActive } = this.state;
+    const { suggestions, inputActive, searchInput } = this.state;
     return (
       <div className="search-container">
-        <form className="filter-form">
+        <form className="filter-form" onSubmit={this.searchMovies}>
           <input
             className={
               !inputActive ? `movie-input` : `movie-input movie-input-active`
@@ -62,7 +65,7 @@ export class FilterBar extends Component {
           />
           <NavLink
             exact
-            to="/search"
+            to={!searchInput ? '/' : '/search'}
             onClick={this.searchMovies}
             className={
               !inputActive
@@ -73,7 +76,7 @@ export class FilterBar extends Component {
             🔍
           </NavLink>
         </form>
-        {suggestions && (
+        {searchInput && suggestions && (
           <Suggestions
             selectMovie={this.selectMovie}
             suggestions={suggestions.slice(0, 6)}
@@ -84,11 +87,15 @@ export class FilterBar extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  searchedMovies: state.movies.searched
+});
+
 export const mapDispatchToProps = dispatch => ({
   setSearchedMovies: movies => dispatch(setSearchedMovies(movies))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(FilterBar);
