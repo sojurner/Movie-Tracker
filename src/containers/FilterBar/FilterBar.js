@@ -23,8 +23,7 @@ export class FilterBar extends Component {
     const { searchInput, inputActive } = this.state;
     this.setState({ inputActive: !inputActive });
     if (inputActive && searchInput) {
-      const result = await getMoviesBySearch(searchInput);
-      this.props.setSearchedMovies(result);
+      this.props.setSearchedMovies(await getMoviesBySearch(searchInput));
       this.setState({ searchInput: '', suggestions: null });
     }
   };
