@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getMovieTrailer } from '../../helpers/apiCalls';
 
 import { TrailerModal } from '../../components/TrailerModal/TrailerModal';
+import JumbotronArrows from '../../components/JumbotronArrows/JumbotronArrows';
 import Slide from '../../components/Slide/Slide';
 
 import './Jumbotron.css';
@@ -28,12 +29,9 @@ export class Jumbotron extends Component {
   };
 
   goToNextSlide = () => {
-    const jumboMovies = this.props.nowPlayingMovies.slice(0, 20);
-    if (this.state.currentIndex < jumboMovies.length - 1) {
-      this.setState(prevState => ({
-        currentIndex: prevState.currentIndex + 1
-      }));
-    }
+    this.setState(prevState => ({
+      currentIndex: prevState.currentIndex + 1
+    }));
   };
 
   handleTrailerClick = async movieId => {
@@ -52,38 +50,18 @@ export class Jumbotron extends Component {
 
   render() {
     const { currentIndex, error, trailer, displayModal } = this.state;
-    const { nowPlayingMovies, currentView } = this.props;
-    const jumboMovies = nowPlayingMovies.slice(0, 20);
 
     return (
       <div className="jumbotron">
-        {jumboMovies[currentIndex] && (
-          <Slide
-            currentView={currentView}
-            handleTrailerClick={this.handleTrailerClick}
-            movie={jumboMovies[currentIndex]}
-          />
-        )}
-        <section
-          className={
-            !currentView
-              ? `arrow-icons-container`
-              : `arrows-icons-container-half`
-          }
-        >
-          <div className="backArrow">
-            <i
-              className="fas fa-angle-left jumbo-arrow"
-              onClick={this.goToPrevSlide}
-            />
-          </div>
-          <div className="nextArrow">
-            <i
-              className="fas fa-angle-right jumbo-arrow"
-              onClick={this.goToNextSlide}
-            />
-          </div>
-        </section>
+        <Slide
+          currentIndex={currentIndex}
+          handleTrailerClick={this.handleTrailerClick}
+        />
+        <JumbotronArrows
+          currentIndex={currentIndex}
+          goToNextSlide={this.goToNextSlide}
+          goToPrevSlide={this.goToPrevSlide}
+        />
         <TrailerModal
           trailer={trailer}
           displayModal={displayModal}
@@ -100,9 +78,7 @@ Jumbotron.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  nowPlayingMovies: state.movies.nowPlaying,
-  error: state.errors.favoriteError,
-  currentView: state.currentView
+  error: state.errors.favoriteError
 });
 
 export default connect(mapStateToProps)(Jumbotron);

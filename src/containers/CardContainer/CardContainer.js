@@ -8,12 +8,7 @@ import PropTypes from 'prop-types';
 
 import './CardContainer.css';
 
-export const CardContainer = ({
-  movies,
-  category,
-  setCurrentView,
-  similar
-}) => {
+export const CardContainer = ({ movies, similar }) => {
   const movieSections = [
     'nowPlaying',
     'popular',

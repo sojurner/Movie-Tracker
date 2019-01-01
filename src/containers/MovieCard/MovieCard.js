@@ -15,7 +15,6 @@ export class MovieCard extends Component {
   constructor() {
     super();
     this.state = {
-      hover: false,
       displayModal: false,
       trailer: '',
       error: null
@@ -64,21 +63,12 @@ export class MovieCard extends Component {
     }
   };
 
-  hoverOn = () => {
-    this.setState({ hover: true });
-  };
-
-  hoverOff = () => {
-    this.setState({ hover: false });
-    this.props.setFavoritesErrorState('');
-  };
-
   onCloseModal = () => {
     this.setState({ displayModal: false });
   };
 
   render() {
-    const { hover, trailer, error, displayModal } = this.state;
+    const { trailer, error, displayModal } = this.state;
     const {
       release_date,
       overview,
@@ -88,15 +78,19 @@ export class MovieCard extends Component {
       movie_id
     } = this.props.movie;
     return (
-      <div
-        onMouseEnter={this.hoverOn}
-        onMouseLeave={this.hoverOff}
-        className="movie-card"
-        style={{
-          backgroundImage: `url(${poster_path})`
-        }}
-      >
-        <div className={hover ? 'overlay' : 'display-none'}>
+      <div className="movie-card">
+        <div
+          style={{
+            backgroundImage: `url(${poster_path})`
+          }}
+          className="side image-side"
+        />
+        <div
+          style={{
+            backgroundImage: `url(${poster_path})`
+          }}
+          className="side detail-side"
+        >
           <p>
             <i className="far fa-calendar-alt" />{' '}
             {moment(release_date).format('MMM Do YY')}
