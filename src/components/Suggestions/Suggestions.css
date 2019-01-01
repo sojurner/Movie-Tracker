@@ -1,12 +1,14 @@
 .suggestion {
-  background-color: #fdfdfd;
+  background-color: #464e57;
   padding: 0.5rem 0 0.5rem 0.5rem;
-  width: 17rem;
-  color: #22282e;
+  width: 16.9rem;
+  color: #a7adb3;
+  z-index: 0;
   cursor: pointer; }
 
 .suggestion:first-child {
   border-top-left-radius: 0.4rem;
+  padding-top: 1rem;
   border-top-right-radius: 0.4rem; }
 
 .suggestion:last-child {
@@ -15,15 +17,16 @@
 
 .suggestion-list {
   cursor: pointer;
-  z-index: 10;
+  z-index: 1;
   position: absolute;
   font-size: 0.9rem;
-  top: 3.48rem;
+  top: 3rem;
   left: 50%;
   margin: 0 0 0 -8.5rem;
   border: 1px solid #c6def4;
   border-radius: 0.5rem; }
 
 .suggestion:hover {
-  background-color: #e3edf4;
-  color: #006dcc; }
+  background-color: #3a4246;
+  color: #d0d5d8;
+  font-weight: bold; }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { Suggestions } from '../../components/Suggestions/Suggestions';
 
@@ -15,8 +15,10 @@ export class FilterBar extends Component {
     this.state = {
       searchInput: '',
       suggestions: null,
-      inputActive: false
+      inputActive: false,
+      redirect: ''
     };
+    this.inputFocus = React.createRef();
   }
 
   searchMovies = async () => {
@@ -25,7 +27,12 @@ export class FilterBar extends Component {
     if (inputActive && searchInput) {
       const result = await getMoviesBySearch(searchInput);
       this.props.setSearchedMovies(result);
-      this.setState({ searchInput: '', suggestions: null });
+      this.setState({
+        suggestions: null,
+        redirect: `/search/?q=${searchInput}`
+      });
+    } else {
+      this.inputFocus.focus();
     }
   };
 
@@ -34,18 +41,24 @@ export class FilterBar extends Component {
     this.setState({ [name]: value, suggestions: getSuggestions(value) });
   };
 
-  selectMovie = searchInput => {
-    this.setState({
+  selectMovie = async searchInput => {
+    await this.setState({
       searchInput,
       suggestions: null
     });
+    this.searchMovies();
+  };
+
+  submitSearch = event => {
+    event.preventDefault();
+    this.searchMovies();
   };
 
   render() {
-    const { suggestions, inputActive, searchInput } = this.state;
+    const { suggestions, inputActive, searchInput, redirect } = this.state;
     return (
-      <div className="search-container">
-        <form className="filter-form" onSubmit={this.searchMovies}>
+      <div className="filter-container">
+        <form className="filter-form" onSubmit={this.submitSearch}>
           <input
             className={
               !inputActive ? `movie-input` : `movie-input movie-input-active`
@@ -53,16 +66,14 @@ export class FilterBar extends Component {
             placeholder="Enter Movie"
             type="text"
             name="searchInput"
+            ref={input => {
+              this.inputFocus = input;
+            }}
+            autoComplete="off"
             onChange={this.setSearchInput}
             value={this.state.searchInput}
           />
-          <NavLink
-            exact
-            to={
-              !searchInput && !this.props.searchedMovies
-                ? '/'
-                : `/search/q=${searchInput}`
-            }
+          <div
             onClick={this.searchMovies}
             className={
               !inputActive
@@ -70,12 +81,16 @@ export class FilterBar extends Component {
                 : `search-button search-button-active`
             }
           >
-            🔍
-          </NavLink>
+            <span role="img" aria-label="search icon">
+              {' '}
+              🔍{' '}
+            </span>
+          </div>
+          {redirect && <Redirect to={redirect} />}
         </form>
         {searchInput && suggestions && (
           <Suggestions
-            selectMovie={this.selectMovie}
+            searchMovies={this.selectMovie}
             suggestions={suggestions.slice(0, 6)}
           />
         )}

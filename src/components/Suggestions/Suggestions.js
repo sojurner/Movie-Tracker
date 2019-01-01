@@ -1,13 +1,13 @@
 import React from 'react';
 import './Suggestions.css';
 
-export const Suggestions = ({ suggestions, selectMovie }) => {
+export const Suggestions = ({ suggestions, searchMovies }) => {
   const suggestionList = suggestions.map((suggestion, index) => {
     return (
       <div
         key={`suggestion-${index}`}
         className={`suggestion suggestion-${index}`}
-        onClick={selectMovie.bind(null, suggestion)}
+        onClick={searchMovies.bind(null, suggestion)}
       >
         {suggestion}
       </div>
