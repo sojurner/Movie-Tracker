@@ -11,7 +11,8 @@
   border-bottom: 1.5px solid rgba(17, 56, 104, 0.338); }
 
 .alice-carousel__wrapper {
-  width: 82%;
+  width: 90vw;
+  padding-left: 42px !important;
   margin: auto; }
 
 .alice-carousel__prev-btn-item,
@@ -21,6 +22,10 @@
 .alice-carousel__prev-btn-item:hover,
 .alice-carousel__next-btn-item:hover {
   color: #747474; }
+
+.alice-carousel__dots-item {
+  height: 12px !important;
+  width: 12px !important; }
 
 .in-theaters-text,
 .popular-text {

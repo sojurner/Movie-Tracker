@@ -79,15 +79,11 @@ export const CardContainer = ({ movies, similar }) => {
               <i className={icons[index]} />
             </div>
             <AliceCarousel
-              duration={400}
-              autoPlay={true}
               startIndex={1}
               fadeOutAnimation={true}
-              dotsDisabled={true}
+              // dotsDisabled={true}
               mouseDragEnabled={true}
               responsive={responsive}
-              autoPlayInterval={Math.random() * 3 * 1000 + 3000}
-              autoPlayDirection="rtl"
               autoPlayActionDisabled={true}
             >
               {movieCards}

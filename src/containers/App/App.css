@@ -78,7 +78,7 @@ body {
     height: 300px; } }
 
 @media screen and (max-width: 780px) {
-  .app {
+  .root-loaded {
     flex-direction: column; }
   .modal-trailer {
     border: none;

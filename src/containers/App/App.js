@@ -71,7 +71,7 @@ export class App extends Component {
     return (
       <div>
         <Router>
-          <div className="app">
+          <div className={nowPlaying.length ? 'root-loaded' : 'root-loading'}>
             <FilterBar />
             <Navigation />
             {!searched && (
@@ -119,7 +119,6 @@ export const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   nowPlaying: state.movies.nowPlaying,
   currentUser: state.currentUser,
-  currentView: state.currentView,
   searched: state.movies.searched
 });
 

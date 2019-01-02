@@ -28,6 +28,7 @@ export class FilterBar extends Component {
       const result = await getMoviesBySearch(searchInput);
       this.props.setSearchedMovies(result);
       this.setState({
+        searchInput: '',
         suggestions: null,
         redirect: `/search/?q=${searchInput}`
       });

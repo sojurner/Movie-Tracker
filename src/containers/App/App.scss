@@ -2,6 +2,9 @@ body {
   font-family: nunito;
 }
 
+.root-loaded {
+}
+
 .main-container {
   height: 100vh;
   display: flex;
@@ -95,7 +98,7 @@ body {
 }
 
 @media screen and (max-width: 780px) {
-  .app {
+  .root-loaded {
     flex-direction: column;
   }
   .modal-trailer {

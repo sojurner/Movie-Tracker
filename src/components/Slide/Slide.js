@@ -52,7 +52,7 @@ const Slide = ({ nowPlayingMovies, handleTrailerClick, currentIndex }) => {
       </div>
     );
   } else {
-    return <div>Loading....</div>;
+    return <div className="gif-container" />;
   }
 };
 
