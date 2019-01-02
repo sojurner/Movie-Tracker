@@ -1,4 +1,4 @@
-import movies from './moviesTitle.json';
+import movies from '../assets/data/moviesTitle.json';
 
 export const getSuggestions = (value, name) => {
   const escapedValue = escapeRegexCharacters(value.trim());
