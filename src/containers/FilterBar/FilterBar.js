@@ -4,8 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import { Suggestions } from '../../components/Suggestions/Suggestions';
 
-import { setSearchedMovies } from '../../actions/movieActions';
-import { getMoviesBySearch } from '../../helpers/apiCalls';
+import { fetchMoviesBySearch } from '../../actions/movieActions';
 import { getSuggestions } from '../../helpers/autoSuggest';
 import './FilterBar.css';
 
@@ -25,8 +24,7 @@ export class FilterBar extends Component {
     const { searchInput, inputActive } = this.state;
     this.setState({ inputActive: !inputActive });
     if (inputActive && searchInput) {
-      const result = await getMoviesBySearch(searchInput);
-      this.props.setSearchedMovies(result);
+      this.props.applyMovieSearch(searchInput);
       this.setState({
         searchInput: '',
         suggestions: null,
@@ -106,7 +104,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  setSearchedMovies: movies => dispatch(setSearchedMovies(movies))
+  applyMovieSearch: movies => dispatch(fetchMoviesBySearch(movies))
 });
 
 export default connect(

@@ -13,15 +13,13 @@ import { setCurrentUser } from '../../actions/userActions.js';
 import Footer from '../../components/Footer/Footer';
 
 import * as action from '../../actions/movieActions';
-import * as call from '../../helpers/apiCalls.js';
 
 import './App.css';
 export class App extends Component {
   constructor() {
     super();
     this.state = {
-      errors: '',
-      path: ''
+      errors: ''
     };
   }
 
@@ -30,33 +28,8 @@ export class App extends Component {
   }
 
   populateMovies = async () => {
-    const {
-      addNowPlaying,
-      addPopular,
-      addActions,
-      addComedies,
-      addDramas,
-      addHorrors,
-      addAnimated,
-      addSciFi
-    } = this.props;
     try {
-      const nowPlaying = await call.getNowPlaying();
-      const popular = await call.getPopularMovies();
-      const dramas = await call.getPopularDramas();
-      const actions = await call.getPopularAction();
-      const animated = await call.getPopularAnimated();
-      const comedies = await call.getPopularComedies();
-      const horrors = await call.getPopularHorror();
-      const sciFi = await call.getPopularSciFi();
-      addNowPlaying(nowPlaying);
-      addPopular(popular);
-      addDramas(dramas);
-      addActions(actions);
-      addAnimated(animated);
-      addComedies(comedies);
-      addHorrors(horrors);
-      addSciFi(sciFi);
+      this.props.fetchMovies();
     } catch (error) {
       this.setState({
         errors: error.message
@@ -65,7 +38,6 @@ export class App extends Component {
   };
 
   render() {
-    const { path } = this.state;
     const { nowPlaying, searched } = this.props;
     return (
       <div>
@@ -75,7 +47,7 @@ export class App extends Component {
             <Navigation />
             {!searched && (
               <main className={`container main-container`}>
-                <Jumbotron path={path} />
+                <Jumbotron />
                 <Routes />
                 <CardContainer category={'nowPlaying'} />
                 <br />
@@ -95,24 +67,13 @@ export class App extends Component {
 }
 
 App.propTypes = {
-  addNowPlaying: PropTypes.func.isRequired,
-  addPopular: PropTypes.func.isRequired,
   setCurrentUser: PropTypes.func.isRequired,
   clearFavorites: PropTypes.func.isRequired,
   currentUser: PropTypes.object
 };
 
 export const mapDispatchToProps = dispatch => ({
-  addNowPlaying: movies => dispatch(action.addNowPlaying(movies)),
-  addPopular: movies => dispatch(action.addPopular(movies)),
-  addDramas: movies => dispatch(action.addDramas(movies)),
-  addActions: movies => dispatch(action.addActions(movies)),
-  addAnimated: movies => dispatch(action.addAnimated(movies)),
-  addComedies: movies => dispatch(action.addComedies(movies)),
-  addHorrors: movies => dispatch(action.addHorrors(movies)),
-  addSciFi: movies => dispatch(action.addSciFi(movies)),
-  setCurrentUser: user => dispatch(setCurrentUser(user)),
-  clearFavorites: () => dispatch(action.clearFavorites())
+  fetchMovies: () => dispatch(action.fetchMovies())
 });
 
 const mapStateToProps = state => ({

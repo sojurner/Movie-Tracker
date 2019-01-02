@@ -1,55 +1,19 @@
-export const addNowPlaying = movies => ({
-  type: 'ADD_NOW_PLAYING',
-  movies
+export const fetchMovies = () => ({
+  type: 'FETCH_MOVIES'
 });
 
-export const addPopular = movies => ({
-  type: 'ADD_POPULAR',
-  movies
-});
-
-export const addDramas = movies => ({
-  type: 'ADD_DRAMAS',
-  movies
-});
-
-export const addActions = movies => ({
-  type: 'ADD_ACTIONS',
-  movies
-});
-
-export const addAnimated = movies => ({
-  type: 'ADD_ANIMATED',
-  movies
-});
-
-export const addComedies = movies => ({
-  type: 'ADD_COMEDIES',
-  movies
-});
-
-export const addHorrors = movies => ({
-  type: 'ADD_HORRORS',
-  movies
-});
-
-export const addSciFi = movies => ({
-  type: 'ADD_SCI_FI',
-  movies
-});
-
-export const setSearchedMovies = movies => ({
-  type: 'SET_SEARCHED',
-  movies
+export const fetchMoviesBySearch = input => ({
+  type: 'FETCH_MOVIES_BY_SEARCH',
+  input
 });
 
 export const resetSearch = () => ({
   type: 'RESET_SEARCH'
 });
 
-export const setSimilarMovies = movies => ({
-  type: 'SET_SIMILAR_MOVIES',
-  movies
+export const fetchSimilarMovies = movieId => ({
+  type: 'FETCH_MOVIES_SIMILAR',
+  movieId
 });
 
 export const resetSimilar = () => ({
