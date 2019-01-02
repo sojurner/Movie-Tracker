@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 
 import CardContainer from '../CardContainer/CardContainer';
 
-import { getSimilarMovies } from '../../helpers/apiCalls';
-import { setSimilarMovies } from '../../actions/movieActions';
+import { fetchSimilarMovies } from '../../actions/movieActions';
 import './SearchResults.css';
 
 export class SearchResults extends Component {
@@ -24,7 +23,7 @@ export class SearchResults extends Component {
   };
 
   getSimilarMovies = async targetFilm => {
-    this.props.setSimilarMovies(await getSimilarMovies(targetFilm));
+    this.props.fetchSimilarMovies(targetFilm);
     this.setState({ targetFilm });
   };
 
@@ -90,7 +89,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  setSimilarMovies: movies => dispatch(setSimilarMovies(movies))
+  fetchSimilarMovies: movie => dispatch(fetchSimilarMovies(movie))
 });
 
 export default connect(
