@@ -16,7 +16,6 @@ import * as action from '../../actions/movieActions';
 import * as call from '../../helpers/apiCalls.js';
 
 import './App.css';
-
 export class App extends Component {
   constructor() {
     super();

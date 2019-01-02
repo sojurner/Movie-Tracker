@@ -42,7 +42,8 @@ export class FilterBar extends Component {
     this.setState({ [name]: value, suggestions: getSuggestions(value) });
   };
 
-  selectMovie = async searchInput => {
+  selectMovie = async input => {
+    const searchInput = input.slice(0, input.indexOf('('));
     await this.setState({
       searchInput,
       suggestions: null
