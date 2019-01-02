@@ -11,10 +11,10 @@ export const movieCleaner = data => {
       ),
       overview: result.overview,
       vote_average: result.vote_average,
-      backdrop_path: `http://image.tmdb.org/t/p/original${
+      backdrop_path: `https://image.tmdb.org/t/p/original${
         result.backdrop_path
       }`,
-      poster_path: `http://image.tmdb.org/t/p/original${result.poster_path}`,
+      poster_path: `https://image.tmdb.org/t/p/original${result.poster_path}`,
       favorite: false
     };
   });
@@ -31,10 +31,10 @@ export const similarMovieCleaner = data => {
       ),
       overview: result.overview,
       vote_average: result.vote_average,
-      backdrop_path: `http://image.tmdb.org/t/p/original${
+      backdrop_path: `https://image.tmdb.org/t/p/original${
         result.backdrop_path
       }`,
-      poster_path: `http://image.tmdb.org/t/p/original${result.poster_path}`,
+      poster_path: `https://image.tmdb.org/t/p/original${result.poster_path}`,
       favorite: false
     };
   });
