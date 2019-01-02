@@ -1,18 +1,13 @@
 body {
   font-family: nunito;
 }
+
 .main-container {
   height: 100vh;
   display: flex;
   flex-direction: column;
   scroll-snap-type: y proximity;
   overflow-y: scroll;
-  background-color: #095669;
-}
-
-.half-container {
-  display: flex;
-  // flex-direction: row;
   background-color: #095669;
 }
 

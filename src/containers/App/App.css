@@ -9,10 +9,6 @@ body {
   overflow-y: scroll;
   background-color: #095669; }
 
-.half-container {
-  display: flex;
-  background-color: #095669; }
-
 .modal-trailer {
   border: none;
   height: 500px;

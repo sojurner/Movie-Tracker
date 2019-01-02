@@ -10,6 +10,7 @@ import Jumbotron from '../Jumbotron/Jumbotron';
 import CardContainer from '../CardContainer/CardContainer.js';
 import SearchResults from '../SearchResults/SearchResults';
 import { setCurrentUser } from '../../actions/userActions.js';
+import Footer from '../../components/Footer/Footer';
 
 import * as action from '../../actions/movieActions';
 import * as call from '../../helpers/apiCalls.js';
@@ -71,16 +72,19 @@ export class App extends Component {
       <div>
         <Router>
           <div className="app">
-            {!nowPlaying && (
-              <img src="https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwicia_T7YTfAhXGmOAKHZkHDd4QjRx6BAgBEAU&url=https%3A%2F%2Fdribbble.com%2Fshots%2F2236318-Gooey-Effect-Infinity-Spinner-Loader&psig=AOvVaw1sCSKgJKFf0nnjB73NmmM5&ust=1543967477929265" />
-            )}
             <FilterBar />
             <Navigation />
             {!searched && (
               <main className={`container main-container`}>
                 <Jumbotron path={path} />
                 <Routes />
-                <CardContainer category={'nowPlaying'} />;
+                <CardContainer category={'nowPlaying'} />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <Footer />
               </main>
             )}
             {searched && <Route path="/search" component={SearchResults} />}
