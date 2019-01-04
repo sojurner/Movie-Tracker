@@ -1,0 +1,50 @@
+.loading-container {
+  height: 100vh;
+  width: 100vw;
+  background-blend-mode: multiply;
+  background-color: rgba(0, 0, 0, 0.8); }
+
+.back-square,
+.front-square {
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid white;
+  z-index: 10;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  margin: -2rem 0 0 -2rem; }
+
+.back-square {
+  animation: counter-clockwise 5s linear infinite;
+  background-color: rgba(43, 77, 77, 0.479); }
+
+.front-square {
+  transform: rotate(45deg);
+  background-color: rgba(22, 21, 21, 0.8);
+  animation: clockwise 4s linear infinite; }
+
+@keyframes clockwise {
+  0% {
+    transform: rotate(45deg); }
+  25% {
+    transform: rotate(135deg); }
+  50% {
+    transform: rotate(225deg); }
+  75% {
+    transform: rotate(315deg); }
+  100% {
+    transform: rotate(405deg); } }
+
+@keyframes counter-clockwise {
+  0% {
+    transform: rotate(0deg); }
+  25% {
+    transform: rotate(-90deg); }
+  50% {
+    transform: rotate(-180deg); }
+  75% {
+    transform: rotate(-270deg); }
+  100% {
+    transform: rotate(-360deg); } }

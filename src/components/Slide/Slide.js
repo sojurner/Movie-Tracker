@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
+import Loading from '../Loading/Loading';
 import PropTypes from 'prop-types';
 import StarRatingComponent from 'react-star-rating-component';
 
@@ -52,7 +54,7 @@ const Slide = ({ nowPlayingMovies, handleTrailerClick, currentIndex }) => {
       </div>
     );
   } else {
-    return <div className="gif-container" />;
+    return <Loading />;
   }
 };
 

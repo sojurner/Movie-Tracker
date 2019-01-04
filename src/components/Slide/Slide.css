@@ -6,18 +6,6 @@
   background-size: cover;
   background-position: center center; }
 
-.gif-container {
-  background-color: rgba(0, 0, 0, 0.681);
-  background-image: url(https://raw.githubusercontent.com/sojurner/Event-Mapper/master/src/images/loader.gif);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 8rem;
-  height: 100vh;
-  width: 100vw; }
-
-.loading-gif {
-  z-index: 1000; }
-
 .jumbotron-overlay {
   margin: 0;
   padding: 0;
