@@ -1,10 +1,8 @@
 .slide {
   margin: 0;
   padding: 0;
-  height: 75vh;
-  width: 100%;
   background-size: cover;
-  background-position: center center; }
+  background-position: top center; }
 
 .jumbotron-overlay {
   margin: 0;

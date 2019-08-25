@@ -6,20 +6,9 @@ class Footer extends React.Component {
     isEnd: false
   };
 
-  componentDidMount = () => {
-    window.addEventListener('scroll', this.checkEndPosition, true);
-  };
-
   redirect = link => {
     const newTab = window.open(link, '_blank');
     newTab.focus();
-  };
-
-  checkEndPosition = event => {
-    const { scrollHeight, clientHeight, scrollTop } = event.target;
-    clientHeight === scrollHeight - scrollTop
-      ? this.setState({ isEnd: true })
-      : this.setState({ isEnd: false });
   };
 
   render() {
@@ -40,27 +29,28 @@ class Footer extends React.Component {
         website: 'https://www.linkedin.com/in/codytaft/'
       }
     ];
-    const { isEnd } = this.state;
     return (
-      <footer className={isEnd ? 'footer-show' : 'footer-hide'}>
-        <p className="copyright"> © 2018</p>
-        {contributors.map(contributor => {
-          return (
-            <div className="footer-contributor-content">
-              <p className="footer-author">{contributor.name}</p>
-              <div className="footer-icon-list">
-                <i
-                  onClick={this.redirect.bind(null, contributor.ghLink)}
-                  className="fab fa-github-alt"
-                />
-                <i
-                  onClick={this.redirect.bind(null, contributor.website)}
-                  className="fas fa-sitemap"
-                />
+      <footer>
+        <div className={'footer-show'}>
+          <p className="copyright"> © 2018</p>
+          {contributors.map(contributor => {
+            return (
+              <div className="footer-contributor-content">
+                <p className="footer-author">{contributor.name}</p>
+                <div className="footer-icon-list">
+                  <i
+                    onClick={this.redirect.bind(null, contributor.ghLink)}
+                    className="fab fa-github-alt"
+                  />
+                  <i
+                    onClick={this.redirect.bind(null, contributor.website)}
+                    className="fas fa-sitemap"
+                  />
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </footer>
     );
   }

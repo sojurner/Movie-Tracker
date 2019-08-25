@@ -1,10 +1,5 @@
-.footer-hide,
 .footer-show {
-  position: absolute;
   width: 80vw;
-  bottom: 0rem;
-  left: 0;
-  right: 0;
   color: rgb(129, 192, 199);
   transition: 0.2s linear;
   display: flex;
@@ -12,10 +7,7 @@
   justify-content: space-between;
   margin: auto;
   align-items: center;
-}
-
-.footer-hide {
-  transform: translate3d(0, 4rem, 0);
+  z-index: 100000;
 }
 
 footer p {

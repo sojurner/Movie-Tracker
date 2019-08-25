@@ -1,12 +1,23 @@
 body {
-  font-family: nunito; }
+  font-family: nunito;
+  overflow-x: hidden; }
+
+::-webkit-scrollbar {
+  width: 5px; }
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #000000;
+  border-radius: 10px; }
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 20px; }
 
 .main-container {
   height: 100vh;
   display: flex;
   flex-direction: column;
   scroll-snap-type: y proximity;
-  overflow-y: scroll;
   background-color: #095669; }
 
 .modal-trailer {
