@@ -52,9 +52,7 @@ export class App extends Component {
                 <CardContainer category={'nowPlaying'} />
                 <br />
                 <br />
-                <br />
-                <br />
-                <br />
+
                 <Footer />
               </main>
             )}

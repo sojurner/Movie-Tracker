@@ -1,20 +1,13 @@
-.footer-hide,
 .footer-show {
-  position: absolute;
   width: 80vw;
-  bottom: 0rem;
-  left: 0;
-  right: 0;
   color: #81c0c7;
   transition: 0.2s linear;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: auto;
-  align-items: center; }
-
-.footer-hide {
-  transform: translate3d(0, 4rem, 0); }
+  align-items: center;
+  z-index: 100000; }
 
 footer p {
   letter-spacing: 2px;
